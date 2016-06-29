@@ -22,11 +22,12 @@ public class AppointmentFrame extends JFrame {
     private JLabel titleLabel;
     private JTextField textField1;
     private JButton addClientButton;
-    private JComboBox comboBox2;
-    private JList list1;
     private JSpinner spinner1;
     private JDatePickerImpl JDatePickerImpl1;
     private JLabel clientLabel;
+    private JComboBox comboBox1;
+    private JSpinner spinner2;
+    private JList list1;
 
     public AppointmentFrame() {
         // add root component

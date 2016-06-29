@@ -3,12 +3,12 @@
   <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="5" column-count="22" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="622" height="400"/>
+      <xy x="20" y="20" width="708" height="182"/>
     </constraints>
     <properties>
       <background color="-15384261"/>
     </properties>
-    <border type="none"/>
+    <border type="none" title="e"/>
     <children>
       <component id="7bc74" class="javax.swing.JLabel" binding="titleLabel">
         <constraints>
@@ -27,60 +27,42 @@
           <text value="+"/>
         </properties>
       </component>
-      <component id="cc84b" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="21" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="dd599" class="javax.swing.JList" binding="list1" default-binding="true">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="20" vsize-policy="6" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="c2450" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
-        <constraints>
-          <grid row="4" column="16" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="50b36" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="4" column="15" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Start Hour"/>
-        </properties>
-      </component>
       <component id="b7988" class="org.jdatepicker.impl.JDatePickerImpl" binding="JDatePickerImpl1" custom-create="true" default-binding="true">
         <constraints>
-          <grid row="4" column="14" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="5" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
       <component id="25148" class="javax.swing.JLabel" binding="clientLabel">
         <constraints>
-          <grid row="1" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="1" row-span="1" col-span="8" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <font size="22"/>
-          <text value="Label"/>
+          <text value="Client"/>
         </properties>
       </component>
       <component id="5b139" class="javax.swing.JLabel">
         <constraints>
-          <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Date"/>
         </properties>
       </component>
+      <component id="43dda" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="8" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <font size="22"/>
+          <text value="Terapie"/>
+        </properties>
+      </component>
       <component id="cbba6" class="javax.swing.JTextField" binding="textField1" default-binding="true">
         <constraints>
-          <grid row="1" column="9" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+          <grid row="1" column="9" row-span="1" col-span="8" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
@@ -89,6 +71,93 @@
           <text value=""/>
         </properties>
       </component>
+      <component id="482ea" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+        <constraints>
+          <grid row="2" column="9" row-span="1" col-span="8" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="50b36" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Start Hour"/>
+        </properties>
+      </component>
+      <component id="c2450" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
+        <constraints>
+          <grid row="4" column="11" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="87fcb" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="FInish Hour"/>
+        </properties>
+      </component>
+      <component id="ca60a" class="javax.swing.JSpinner" binding="spinner2" default-binding="true">
+        <constraints>
+          <grid row="4" column="13" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <scrollpane id="e3709">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="20" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="9d021" class="javax.swing.JList" binding="list1" default-binding="true">
+            <constraints/>
+            <properties>
+              <font size="16"/>
+              <model>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+                <item value="salut"/>
+                <item value="ce faci"/>
+                <item value="ba fraere"/>
+              </model>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
     </children>
   </grid>
 </form>
