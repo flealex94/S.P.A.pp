@@ -1,10 +1,14 @@
-import Views.MainView;
+import Utils.AppUtils;
+import Views.MainFrame;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
 
     public static void main(String[] args){
         System.out.println("teddy e sexy");
-        MainView app = new MainView();
-        app.setVisible(true);
+
+        new MainFrame().setVisible(true);
     }
 }
