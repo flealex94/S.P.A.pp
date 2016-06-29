@@ -115,7 +115,7 @@
           <component id="9d021" class="javax.swing.JList" binding="list1" default-binding="true">
             <constraints/>
             <properties>
-              <font size="16"/>
+              <font size="14"/>
               <model>
                 <item value="salut"/>
                 <item value="ce faci"/>
