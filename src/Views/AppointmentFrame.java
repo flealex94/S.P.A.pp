@@ -26,6 +26,7 @@ public class AppointmentFrame extends JFrame {
     private JList list1;
     private JSpinner spinner1;
     private JDatePickerImpl JDatePickerImpl1;
+    private JLabel clientLabel;
 
     public AppointmentFrame() {
         // add root component
