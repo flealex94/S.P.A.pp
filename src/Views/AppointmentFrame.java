@@ -28,6 +28,7 @@ public class AppointmentFrame extends JFrame {
     private JComboBox comboBox1;
     private JSpinner spinner2;
     private JList list1;
+    private JButton backBtn;
 
     public AppointmentFrame() {
         // add root component
