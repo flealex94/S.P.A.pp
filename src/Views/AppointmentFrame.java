@@ -7,6 +7,8 @@ import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,6 +41,26 @@ public class AppointmentFrame extends JFrame {
         // AppUtils
         AppUtils.setFrameDimension(this);
         AppUtils.centerFrame(this);
+
+        adaugaClientButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                setVisible(false); //you can't see me!
+                JFrame nextFrame = new AddClientFrame();
+                dispose(); //Destroy the JFrame object
+                nextFrame.setVisible(true);
+            }
+        });
+
+        inapoiButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                setVisible(false); //you can't see me!
+                JFrame nextFrame = new MainFrame();
+                dispose(); //Destroy the JFrame object
+                nextFrame.setVisible(true);
+            }
+        });
 
     }
 

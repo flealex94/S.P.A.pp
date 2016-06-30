@@ -6,20 +6,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 /**
- * Created by teodor on 29.06.2016.
+ * Created by flea on 30-Jun-16.
  */
-public class MainFrame extends JFrame {
-    private JButton configurareButton;
-    private JButton vizualizareButton;
-    private JButton adaugareButton;
-    private JButton iesireButton;
-    private JLabel appNameLabel;
+public class ConfigurationFrame extends JFrame {
+    private JLabel titleLabel;
+    private JList list1;
+    private JList list2;
     private JPanel rootPanel;
+    private JButton addTerapeutButton;
+    private JButton addTerapieButton;
+    private JButton inapoiButton;
 
-    public MainFrame() {
+    public ConfigurationFrame() {
         // add root component
         setContentPane(rootPanel);
 
@@ -27,28 +27,7 @@ public class MainFrame extends JFrame {
         AppUtils.setFrameDimension(this);
         AppUtils.centerFrame(this);
 
-        adaugareButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                System.out.println(actionEvent);
-                setVisible(false); //you can't see me!
-                JFrame nextFrame = new AppointmentFrame();
-                dispose(); //Destroy the JFrame object
-                nextFrame.setVisible(true);
-            }
-        });
-
-        configurareButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                setVisible(false); //you can't see me!
-                JFrame nextFrame = new ConfigurationFrame();
-                dispose(); //Destroy the JFrame object
-                nextFrame.setVisible(true);
-            }
-        });
-
-        vizualizareButton.addActionListener(new ActionListener() {
+        inapoiButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
@@ -58,14 +37,25 @@ public class MainFrame extends JFrame {
             }
         });
 
-
-        // exit button
-        iesireButton.addActionListener(new ActionListener() {
+        addTerapeutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                setVisible(false); //you can't see me!
+                JFrame nextFrame = new AddTerapeutFrame();
                 dispose(); //Destroy the JFrame object
-                System.exit(0);
+                nextFrame.setVisible(true);
+            }
+        });
+
+        addTerapieButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                setVisible(false); //you can't see me!
+                JFrame nextFrame = new AddTerapieFrame();
+                dispose(); //Destroy the JFrame object
+                nextFrame.setVisible(true);
             }
         });
     }
+
 }
