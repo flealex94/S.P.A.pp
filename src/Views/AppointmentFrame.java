@@ -20,14 +20,17 @@ public class AppointmentFrame extends JFrame {
     private AppUtils appUtils;
     private JPanel rootPanel;
     private JLabel titleLabel;
-    private JTextField textField1;
-    private JButton addClientButton;
-    private JSpinner spinner1;
     private JDatePickerImpl JDatePickerImpl1;
     private JLabel clientLabel;
+    private JList dateDisponibileList;
+    private JButton adaugaClientButton;
+    private JTextField textField1;
     private JComboBox comboBox1;
-    private JSpinner spinner2;
-    private JList list1;
+    private JSpinner oraInceputSpinner;
+    private JButton stergeDataButton;
+    private JButton inapoiButton;
+    private JButton salveazaButton;
+    private JSpinner spinner1;
 
     public AppointmentFrame() {
         // add root component
