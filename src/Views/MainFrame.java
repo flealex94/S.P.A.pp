@@ -3,10 +3,8 @@ package Views;
 import Utils.AppUtils;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 /**
  * Created by teodor on 29.06.2016.
@@ -52,12 +50,11 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
-                JFrame nextFrame = new MainFrame();
+                JFrame nextFrame = new VizualizationFrame();
                 dispose(); //Destroy the JFrame object
                 nextFrame.setVisible(true);
             }
         });
-
 
         // exit button
         iesireButton.addActionListener(new ActionListener() {

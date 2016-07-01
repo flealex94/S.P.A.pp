@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Views.VizualizationFrame">
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="30" left="30" bottom="30" right="30"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-15384261"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="2fd95" class="javax.swing.JButton" binding="saptamanaAnterioaraButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Saptamana Anterioara"/>
+        </properties>
+      </component>
+      <component id="b223" class="javax.swing.JButton" binding="saptamanaUrmatoareButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Saptamana Urmatoare"/>
+        </properties>
+      </component>
+      <component id="16336" class="javax.swing.JButton" binding="inapoiButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Inapoi"/>
+        </properties>
+      </component>
+      <component id="3dea4" class="javax.swing.JButton" binding="reoptimizareButton" default-binding="true">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Reoptimizare"/>
+        </properties>
+      </component>
+      <scrollpane id="2d364">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none" title="Saptamana 2" title-justification="2" title-position="2">
+          <font size="18"/>
+          <title-color color="-4473925"/>
+        </border>
+        <children>
+          <component id="6c7cc" class="javax.swing.JTable" binding="table1" custom-create="true" default-binding="true">
+            <constraints/>
+            <properties>
+              <autoResizeMode value="4"/>
+              <cellSelectionEnabled value="true"/>
+              <enabled value="true"/>
+              <fillsViewportHeight value="false"/>
+              <showVerticalLines value="true"/>
+              <surrendersFocusOnKeystroke value="false"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>
