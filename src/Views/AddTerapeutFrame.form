@@ -67,9 +67,8 @@
             <constraints/>
             <properties>
               <model>
-                <item value="terapie1"/>
-                <item value="terapie2"/>
-                <item value="terapie3"/>
+                <item value="Masaj reflexogen"/>
+                <item value="Masaj de relaxare"/>
               </model>
             </properties>
           </component>
@@ -91,10 +90,9 @@
         </constraints>
         <properties>
           <model>
-            <item value="terapie1"/>
-            <item value="terapie2"/>
-            <item value="terapie3"/>
-            <item value="terapie4"/>
+            <item value="Masaj de relaxare"/>
+            <item value="Drenaj limfatic"/>
+            <item value="Masaj reflexogen"/>
           </model>
         </properties>
       </component>
@@ -139,7 +137,7 @@
         </constraints>
         <properties>
           <font size="22"/>
-          <text value="Inapoi"/>
+          <text value="Înapoi"/>
         </properties>
       </component>
     </children>

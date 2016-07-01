@@ -40,7 +40,7 @@
         </constraints>
         <properties>
           <font size="28"/>
-          <text value="Adaugare"/>
+          <text value="Adăugare"/>
         </properties>
       </component>
       <component id="879da" class="javax.swing.JLabel" binding="appNameLabel">
@@ -49,7 +49,7 @@
         </constraints>
         <properties>
           <font size="48"/>
-          <text value="S.P. App"/>
+          <text value="S.P.A.pp"/>
         </properties>
       </component>
       <component id="3467d" class="javax.swing.JButton" binding="iesireButton" default-binding="true">
@@ -58,7 +58,7 @@
         </constraints>
         <properties>
           <font size="28"/>
-          <text value="Iesire"/>
+          <text value="Ieșire"/>
         </properties>
       </component>
     </children>

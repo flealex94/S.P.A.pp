@@ -28,10 +28,10 @@ public class AppointmentFrame extends JFrame {
     private JButton adaugaClientButton;
     private JTextField textField1;
     private JComboBox comboBox1;
-    private JSpinner oraInceputSpinner;
-    private JButton stergeDataButton;
+    private JSpinner orăÎnceputSpinner;
+    private JButton ștergeDataButton;
     private JButton inapoiButton;
-    private JButton salveazaButton;
+    private JButton salveazăButton;
     private JSpinner spinner1;
 
     public AppointmentFrame() {

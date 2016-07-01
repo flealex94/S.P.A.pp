@@ -16,7 +16,7 @@ public class AddClientFrame extends JFrame{
     private JTextField textField3;
     private JTextField textField4;
     private JButton resetButton;
-    private JButton salveazaButton;
+    private JButton salveazăButton;
     private JButton inapoiButton;
 
     public AddClientFrame() {
