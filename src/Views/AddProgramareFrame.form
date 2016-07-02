@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="8" column-count="20" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="15" left="150" bottom="15" right="150"/>
     <constraints>
-      <xy x="20" y="-4" width="1269" height="385"/>
+      <xy x="20" y="-4" width="1149" height="352"/>
     </constraints>
     <properties>
       <background color="-15384261"/>
@@ -94,12 +94,12 @@
           <font size="22"/>
         </properties>
       </component>
-      <component id="82273" class="javax.swing.JButton" binding="ștergeDataButton" default-binding="true">
+      <component id="82273" class="javax.swing.JButton" binding="ștergeIntervalButton" default-binding="true">
         <constraints>
           <grid row="6" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Șterge Data"/>
+          <text value="Șterge interval"/>
         </properties>
       </component>
       <component id="cf203" class="javax.swing.JButton" binding="inapoiButton" default-binding="true">
@@ -129,7 +129,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="Oră Sfarșit :"/>
+          <text value="Oră Sfârșit :"/>
         </properties>
       </component>
       <component id="3ec56" class="javax.swing.JButton" binding="salveazăButton" default-binding="true">

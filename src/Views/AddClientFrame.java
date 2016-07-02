@@ -6,9 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- * Created by teodor on 30.06.2016.
- */
+
 public class AddClientFrame extends JFrame{
     private JPanel rootPanel;
     private JTextField textField1;
@@ -18,6 +16,7 @@ public class AddClientFrame extends JFrame{
     private JButton resetButton;
     private JButton salveazăButton;
     private JButton inapoiButton;
+    private JComboBox comboBox1;
 
     public AddClientFrame() {
 

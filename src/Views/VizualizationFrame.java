@@ -13,15 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.EventObject;
 
-/**
- * Created by teodor on 01.07.2016.
- */
+
 public class VizualizationFrame extends JFrame {
     private JPanel rootPanel;
     private JButton inapoiButton;
     private JTable table1;
-    private JButton saptamanaAnterioaraButton;
-    private JButton saptamanaUrmatoareButton;
+    private JButton săptămânaAnterioarăButton;
+    private JButton săptămânaUrmatoareButton;
     private JButton reoptimizareButton;
     private int currentWeek = 1;
 
@@ -49,12 +47,12 @@ public class VizualizationFrame extends JFrame {
         // TODO: place custom component creation code here
         String[] columnNames = {"",
             "Luni",
-            "Marti",
+            "Marți",
             "Miercuri",
             "Joi",
             "Vineri",
-            "Sambata",
-            "Duminica"
+            "Sambătă",
+            "Duminică"
         };
 
         // interval orar, luni, marti, miercuri, joi, vineri, sambata, duminica

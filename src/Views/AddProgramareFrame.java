@@ -15,9 +15,7 @@ import java.util.Calendar;
 import java.util.Properties;
 
 
-/**
- * Created by teodor on 29.06.2016.
- */
+
 public class AddProgramareFrame extends JFrame {
     private AppUtils appUtils;
     private JPanel rootPanel;
@@ -29,7 +27,7 @@ public class AddProgramareFrame extends JFrame {
     private JTextField textField1;
     private JComboBox comboBox1;
     private JSpinner orăÎnceputSpinner;
-    private JButton ștergeDataButton;
+    private JButton ștergeIntervalButton;
     private JButton inapoiButton;
     private JButton salveazăButton;
     private JSpinner spinner1;
