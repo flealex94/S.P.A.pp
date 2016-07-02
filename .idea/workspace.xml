@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2e0429b4-cdbc-4b3a-876a-9aeb05915a26" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/VizualizationFrame.java" afterPath="$PROJECT_DIR$/src/Views/VizualizationFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/DatabaseManager.java" afterPath="$PROJECT_DIR$/src/Database/DatabaseManager.java" />
     </list>
     <ignored path="S.P.A.pp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="VizualizationFrame.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VizualizationFrame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Views/VizualizationFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="66" column="147" selection-start-line="66" selection-start-column="147" selection-end-line="66" selection-end-column="147" />
+            <state relative-caret-position="-102">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseManager.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Database/DatabaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="34">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -92,6 +92,7 @@
         <option value="$PROJECT_DIR$/src/Views/AddProgramareFrame.java" />
         <option value="$PROJECT_DIR$/src/Views/AddClientFrame.java" />
         <option value="$PROJECT_DIR$/src/Views/VizualizationFrame.java" />
+        <option value="$PROJECT_DIR$/src/Database/DatabaseManager.java" />
       </list>
     </option>
   </component>
@@ -654,7 +655,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467498440023</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="GUI tweaks&#10;+ &#10;mock visualisation data">
+      <created>1467499930044</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1467499930044</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -701,7 +709,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="main" />
     <MESSAGE value="GUI tweaks" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI tweaks" />
+    <MESSAGE value="GUI tweaks&#10;+ &#10;mock visualisation data" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI tweaks&#10;+ &#10;mock visualisation data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1022,21 +1031,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/VizualizationFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="66" column="147" selection-start-line="66" selection-start-column="147" selection-end-line="66" selection-end-column="147" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseManager.java">
+    <entry file="file://$PROJECT_DIR$/src/Views/VizualizationFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="-102">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
