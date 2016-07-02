@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e0429b4-cdbc-4b3a-876a-9aeb05915a26" name="Default" comment="main">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Database/DatabaseManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/S.P.A.pp.iml" afterPath="$PROJECT_DIR$/S.P.A.pp.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Database/Pojos/ClientPojo.java" />
     </list>
     <ignored path="S.P.A.pp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,16 +50,26 @@
         <entry file="file://$PROJECT_DIR$/src/Database/DatabaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="7" column="118" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Schema logică a bazei de date.jpg" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Schema logică a bazei de date.jpg" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Schema logică a bazei de date.jpg">
           <provider selected="true" editor-type-id="images">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClientPojo.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Database/Pojos/ClientPojo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -107,6 +115,7 @@
         <option value="$PROJECT_DIR$/src/Views/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/Views/VizualizationFrame.form" />
         <option value="$PROJECT_DIR$/src/Views/VizualizationFrame.java" />
+        <option value="$PROJECT_DIR$/src/Database/Pojos/ClientPojo.java" />
       </list>
     </option>
   </component>
@@ -193,6 +202,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="S.P.A.pp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="S.P.A.pp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pojos" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -550,13 +581,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Views/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/AppointmentFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -885,7 +909,7 @@
     <entry file="file://$PROJECT_DIR$/src/Database/DatabaseManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="118" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -893,6 +917,14 @@
     <entry file="file://$PROJECT_DIR$/Schema logică a bazei de date.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Pojos/ClientPojo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
