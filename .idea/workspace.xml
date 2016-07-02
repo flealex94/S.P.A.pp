@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e0429b4-cdbc-4b3a-876a-9aeb05915a26" name="Default" comment="main">
+    <list default="true" id="2e0429b4-cdbc-4b3a-876a-9aeb05915a26" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/AddClientFrame.form" afterPath="$PROJECT_DIR$/src/Views/AddClientFrame.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/AddClientFrame.java" afterPath="$PROJECT_DIR$/src/Views/AddClientFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/AddProgramareFrame.form" afterPath="$PROJECT_DIR$/src/Views/AddProgramareFrame.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/AddProgramareFrame.java" afterPath="$PROJECT_DIR$/src/Views/AddProgramareFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/AddTerapeutFrame.form" afterPath="$PROJECT_DIR$/src/Views/AddTerapeutFrame.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/AddTerapeutFrame.java" afterPath="$PROJECT_DIR$/src/Views/AddTerapeutFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/AddTerapieFrame.form" afterPath="$PROJECT_DIR$/src/Views/AddTerapieFrame.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/AddTerapieFrame.java" afterPath="$PROJECT_DIR$/src/Views/AddTerapieFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/ConfigurationFrame.form" afterPath="$PROJECT_DIR$/src/Views/ConfigurationFrame.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/VizualizationFrame.form" afterPath="$PROJECT_DIR$/src/Views/VizualizationFrame.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Views/VizualizationFrame.java" afterPath="$PROJECT_DIR$/src/Views/VizualizationFrame.java" />
     </list>
     <ignored path="S.P.A.pp.iws" />
@@ -35,14 +25,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="VizualizationFrame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VizualizationFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Views/VizualizationFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+            <state relative-caret-position="408">
+              <caret line="66" column="147" selection-start-line="66" selection-start-column="147" selection-end-line="66" selection-end-column="147" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Database/DatabaseManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -87,11 +87,11 @@
         <option value="$PROJECT_DIR$/src/Views/AddTerapieFrame.form" />
         <option value="$PROJECT_DIR$/src/Views/AddProgramareFrame.form" />
         <option value="$PROJECT_DIR$/src/Views/VizualizationFrame.form" />
-        <option value="$PROJECT_DIR$/src/Views/VizualizationFrame.java" />
         <option value="$PROJECT_DIR$/src/Views/AddTerapieFrame.java" />
         <option value="$PROJECT_DIR$/src/Views/AddTerapeutFrame.java" />
         <option value="$PROJECT_DIR$/src/Views/AddProgramareFrame.java" />
         <option value="$PROJECT_DIR$/src/Views/AddClientFrame.java" />
+        <option value="$PROJECT_DIR$/src/Views/VizualizationFrame.java" />
       </list>
     </option>
   </component>
@@ -330,6 +330,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="S.P.A.pp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="S.P.A.pp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Database" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -629,7 +647,14 @@
       <option name="project" value="LOCAL" />
       <updated>1467195291908</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="GUI tweaks">
+      <created>1467498440023</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1467498440023</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -675,7 +700,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="main" />
-    <option name="LAST_COMMIT_MESSAGE" value="main" />
+    <MESSAGE value="GUI tweaks" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI tweaks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -884,7 +910,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Diagrama Bazei de Date.png" />
-    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseManager.java" />
     <entry file="file://$PROJECT_DIR$/Schema logică a bazei de date.jpg" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_73/src.zip!/javax/swing/table/TableCellRenderer.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_73/src.zip!/java/awt/Component.java" />
@@ -999,11 +1024,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/VizualizationFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        <state relative-caret-position="408">
+          <caret line="66" column="147" selection-start-line="66" selection-start-column="147" selection-end-line="66" selection-end-column="147" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

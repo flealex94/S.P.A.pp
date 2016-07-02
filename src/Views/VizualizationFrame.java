@@ -57,16 +57,16 @@ public class VizualizationFrame extends JFrame {
 
         // interval orar, luni, marti, miercuri, joi, vineri, sambata, duminica
         Object[][] data = {
-                {"9-10", "Alex + \nTeodor = \nLove", "", "", "", "", "", ""},
-                {"10-11", "", "", "", "", "", "", ""},
+                {"9-10", "Client 1 + \nTerapeut 1 = \nTerapie 1", "", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", ""},
+                {"10-11", "Client 1 + \nTerapeut 2 = \nTerapie 3", "", "", "", "", "", ""},
                 {"11-12", "", "", "", "", "", "", ""},
-                {"12-13", "", "", "", "", "", "", ""},
+                {"12-13", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", "", "", ""},
                 {"13-14", "", "", "", "", "", "", ""},
-                {"14-15", "", "", "", "", "", "", ""},
-                {"15-16", "", "", "", "", "", "", ""},
-                {"16-17", "", "", "", "", "", "", ""},
-                {"17-18", "", "", "", "", "", "", ""},
-                {"18-19", "", "", "", "", "", "", ""}
+                {"14-15", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", "", "", "Client 1 + \nTerapeut 2 = \nTerapie 3"},
+                {"15-16", "", "", "", "Grigore Costache + \nValentin Ionescu = \nMasaj reflexogen", "", "", "Client 1 + \nTerapeut 2 = \nTerapie 3"},
+                {"16-17", "", "", "", "Grigore Costache + \nValentin Ionescu = \nMasaj reflexogen", "", "", "Client 1 + \nTerapeut 2 = \nTerapie 3"},
+                {"17-18", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", "", "", ""},
+                {"18-19", "", "Grigore Costache + \nValentin Ionescu = \nMasaj reflexogen", "", "", "", "", ""}
         };
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
