@@ -1,8 +1,10 @@
 package Database.Dao;
 
-/**
- * Created by teodor on 02.07.2016.
- */
-public class ClientDao {
+import Pojos.Client;
+import com.j256.ormlite.dao.Dao;
 
+import java.util.List;
+
+public interface ClientDao extends Dao<Client, Integer> {
+    List<Client> getAllClients();
 }

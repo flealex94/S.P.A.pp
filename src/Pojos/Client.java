@@ -1,15 +1,13 @@
 package Pojos;
 
+import Database.DaoImplementations.ClientDaoImpl;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-/**
- * Created by teodor on 02.07.2016.
- */
 
-@DatabaseTable(tableName = "Client")
-public class ClientPojo {
-    @DatabaseField(id = true)
+@DatabaseTable(tableName = "Client", daoClass = ClientDaoImpl.class)
+public class Client {
+    @DatabaseField(columnName = "idClient", id = true)
     private int id;
 
     @DatabaseField(columnName = "Nume", canBeNull = false)
@@ -27,11 +25,11 @@ public class ClientPojo {
     @DatabaseField(columnName = "Sex", canBeNull = false)
     private String sex;
 
-    public ClientPojo() {
+    public Client() {
         // ORMLite needs a no-arg constructor
     }
 
-    public ClientPojo(int id, String nume, String prenume, String telefon, String email, String sex) {
+    public Client(int id, String nume, String prenume, String telefon, String email, String sex) {
         this.id = id;
         this.nume = nume;
         this.prenume = prenume;
