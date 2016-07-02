@@ -18,7 +18,7 @@ import java.util.Properties;
 /**
  * Created by teodor on 29.06.2016.
  */
-public class AppointmentFrame extends JFrame {
+public class AddProgramareFrame extends JFrame {
     private AppUtils appUtils;
     private JPanel rootPanel;
     private JLabel titleLabel;
@@ -33,8 +33,9 @@ public class AppointmentFrame extends JFrame {
     private JButton inapoiButton;
     private JButton salveazăButton;
     private JSpinner spinner1;
+    private JButton adaugăIntervalButton;
 
-    public AppointmentFrame() {
+    public AddProgramareFrame() {
         // add root component
         setContentPane(rootPanel);
 

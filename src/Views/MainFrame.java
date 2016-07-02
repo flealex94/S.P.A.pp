@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 System.out.println(actionEvent);
                 setVisible(false); //you can't see me!
-                JFrame nextFrame = new AppointmentFrame();
+                JFrame nextFrame = new AddProgramareFrame();
                 dispose(); //Destroy the JFrame object
                 nextFrame.setVisible(true);
             }

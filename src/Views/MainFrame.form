@@ -40,7 +40,7 @@
         </constraints>
         <properties>
           <font size="28"/>
-          <text value="Adăugare"/>
+          <text value="Programare nouă"/>
         </properties>
       </component>
       <component id="879da" class="javax.swing.JLabel" binding="appNameLabel">
