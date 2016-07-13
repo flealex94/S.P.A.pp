@@ -1,9 +1,5 @@
 import Database.DatabaseManager;
-import Utils.AppUtils;
 import Views.MainFrame;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class App {
 

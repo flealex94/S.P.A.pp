@@ -43,7 +43,6 @@ public class AppointmentFrame extends JFrame {
         AppUtils.centerFrame(this);
 
         adaugaClientButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new AddClientFrame();
@@ -53,7 +52,6 @@ public class AppointmentFrame extends JFrame {
         });
 
         inapoiButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new MainFrame();

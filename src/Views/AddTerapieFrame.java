@@ -29,7 +29,6 @@ public class AddTerapieFrame extends JFrame {
         AppUtils.centerFrame(this);
 
         inapoiButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new ConfigurationFrame();

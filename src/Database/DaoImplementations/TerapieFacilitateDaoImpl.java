@@ -19,12 +19,10 @@ public class TerapieFacilitateDaoImpl extends BaseDaoImpl<TerapieFacilitate, Int
     }
 
     // specific functions
-    @Override
     public List<TerapieFacilitate> getFacilitiesByTherapyId() {
         return null;
     }
 
-    @Override
     public List<TerapieFacilitate> getTherapiesByRequirementId() {
         return null;
     }
