@@ -6,13 +6,13 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 
-@DatabaseTable(tableName = "TerapeutTerapie", daoClass = TerapeutTerapieDaoImpl.class)
+@DatabaseTable(tableName = "terapeut_terapie", daoClass = TerapeutTerapieDaoImpl.class)
 public class TerapeutTerapie {
 
     @DatabaseField(columnName = "idTerapeut", id = true)
     private int idTerapeut;
 
-    @DatabaseField(columnName = "idTerapie", id = true)
+    @DatabaseField(columnName = "idTerapie")
     private int idTerapie;
 
     // constructors

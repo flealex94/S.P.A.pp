@@ -26,17 +26,5 @@ public class ClientDaoImpl extends BaseDaoImpl<Client, Integer> implements Clien
         super(connectionSource, Client.class);
     }
 
-    public List<Client> getAllClients() {
-        System.out.println("Getting all the fking clients, mofo!");
-        List<Client> ret = null;
-        try {
-            ret = queryForAll();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return ret;
-    }
-
-
 }
 

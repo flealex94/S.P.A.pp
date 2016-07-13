@@ -11,7 +11,7 @@ public class AppUtils {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         // get 2/3 of the height, and 2/3 of the width
         int height = (int)(screenSize.height * 2.5 / 3);
-        int width = (int)(screenSize.width * 2.5 / 3);
+        int width = (int)(screenSize.width * 1.5 / 3);
 
         // set the jframe height and width
         frame.setPreferredSize(new Dimension(width, height));

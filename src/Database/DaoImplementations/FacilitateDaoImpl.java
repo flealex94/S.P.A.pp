@@ -9,8 +9,9 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.DatabaseTableConfig;
 
 import java.sql.SQLException;
+import java.util.List;
 
-public class FacilitateDaoImpl extends BaseDaoImpl<Facilitate, Integer> implements FacilitateDao{
+public class FacilitateDaoImpl extends BaseDaoImpl<Facilitate, Integer> implements FacilitateDao {
 
 
     // constructors
