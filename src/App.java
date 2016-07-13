@@ -13,6 +13,6 @@ public class App {
 
         new MainFrame().setVisible(true);
 
-        TSP.GO();
+        TSP.main();
     }
 }
