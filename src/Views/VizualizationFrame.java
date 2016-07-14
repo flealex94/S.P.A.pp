@@ -102,6 +102,7 @@ public class VizualizationFrame extends JFrame {
         public Component getTableCellRendererComponent(JTable table, Object value,
                                                        boolean isSelected, boolean hasFocus,
                                                        int row, int column) {
+            
             this.setText((String) value);
             this.setCaretPosition(0);
             return this;

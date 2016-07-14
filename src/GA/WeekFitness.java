@@ -43,8 +43,8 @@ public class WeekFitness extends Fitness<ObjectChromosome> {
     private Week week;
 
     /**
-     * Creates a new fitness with the given number of objectives and a flag indicating
-     * if consider the maximum score or the minum as better.
+     * Creeaza o noua functie fitnez cu numarul dat de obiective si un paramentru ce indica
+     * daca functia trebuie maximizata sau minimizata
      *
      * @param objectives numbers of objective
      * @param maximize when <tt>true</tt> the algorithm will find solution with maximum score;
@@ -69,21 +69,11 @@ public class WeekFitness extends Fitness<ObjectChromosome> {
         Day[] day = this.week.getDays();
 
         double[] dayCount = new double[this.week.getDayCount()];
-        double[] studentCount = new double[this.programares.length];
+        double[] clieentCount = new double[this.programares.length];
 
         //set to 0 the values of count of how many hours each student work
-        Arrays.fill(studentCount, 0.0);
+        Arrays.fill(clieentCount, 0.0);
 
-        /**
-         * Put genes in a stack, in this way they could be popped out in order.
-         * This could be done according to the coding observed where we found
-         * a chromosome of lenght 
-         * 
-         * num_of_days * num_of_hours_per_day
-         * 
-         * where the first <tt>num_of_hours_per_day</tt> are represented by the temporal 
-         * slices available in the first day, and so on...
-         */
         Stack<ObjectChromosome.Gene> stack = new Stack<ObjectChromosome.Gene>();
         for (int i = 0; i < oc.length(); i++) {
             stack.push(oc.getGene(i));
@@ -102,7 +92,7 @@ public class WeekFitness extends Fitness<ObjectChromosome> {
                 if (!name.equalsIgnoreCase(Programare.Nobody.NAME)) {
                     workTemporalSlice++;
                     //add a work's hour to a student with that name
-                    studentCount = this.countStudentHour(studentCount, name);
+                    clieentCount = this.countStudentHour(clieentCount, name);
                 }
             }
 
@@ -119,9 +109,9 @@ public class WeekFitness extends Fitness<ObjectChromosome> {
         }
         
         int numOfStudents = this.programares.length;
-        for (int i = 0; i < studentCount.length; i++) {
-            studentCount[i] = studentCount[i] - (this.meanHoursForWeek / numOfStudents);
-            rmsForStudent = rmsForStudent + Math.pow(studentCount[i], 2);
+        for (int i = 0; i < clieentCount.length; i++) {
+            clieentCount[i] = clieentCount[i] - (this.meanHoursForWeek / numOfStudents);
+            rmsForStudent = rmsForStudent + Math.pow(clieentCount[i], 2);
         }
 
 

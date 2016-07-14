@@ -162,7 +162,6 @@ public class AG {
 
         Set<Programare> freeProgramares = new HashSet<Programare>();
 
-        //the programare "nobody" is present...
         freeProgramares.add(new Programare.Nobody());
 
         for (int k = 0; k < programare.length; k++) {
@@ -171,7 +170,7 @@ public class AG {
             }
         }
 
-        //the allele set is composed by all of the students available at given time
+        // setul de alele este format din toti cleintii disponibil la un interval de timp dat
         return new GenericAlleleSet<Programare>(freeProgramares);
     }
 
@@ -180,24 +179,15 @@ public class AG {
 
         ObjectChromosome week = individual.getChromosome();
 
-        //print a calendar in this way according to the expected order of genes in chromosome
-        /*
-         *      | Mon   | Tue   | Wed   | Thu   | Fri   | Sat   | Sun   |
-         * --------------------------------------------------------------
-         * minH | stud1 |  --   |  --   | stud2 ...
-         * ...
-         * maxH | stud4 |  --   |  --   | stud1 ...
-         * --------------------------------------------------------------
-         */
 
-        int magicNumber = 65; // number of '-' to renders the separator line horizontally
+        int magicNumber = 65;
 
-        //research of the minH and maxH of a day in the week and print header
+
         int minH = 24;
         int maxH = 1;
 
         StringBuilder sb = new StringBuilder();
-        sb.append("\t"); //reserve space for first column (row label column)
+        sb.append("\t");
 
         Day[] days = w.getDays();
         for (Day d : days) {
@@ -209,27 +199,25 @@ public class AG {
                 maxH = d.getEnd();
             }
 
-            //print day header
+
             sb.append("| ");
             sb.append(d.getPrintableName());
             sb.append("\t");
         }
         sb.append("\n");
 
-        //renders the horizontal separation line
+
         for (int i = 0; i < magicNumber; i++) {
             sb.append("-");
         }
         sb.append("\n");
 
-        //renders the rows in the table
         int row = 0;
         for (int i = minH; i < maxH; i++, row++) {
-            //print time column
+
             sb.append(i);
             sb.append("\t| ");
 
-            //check for all days at this time who is selected for task
             int offset = row;
             for (Day d : days) {
                 if (d.isWorkingHour(i)) {
@@ -249,7 +237,6 @@ public class AG {
             sb.append("\n");
         }
 
-        //renders the last separation line under the table
         for (int i = 0; i < magicNumber; i++) {
             sb.append("-");
         }
@@ -283,30 +270,30 @@ public class AG {
         for (int i = minH; i < maxH; i++, row++) {
 
             StringBuilder sb = new StringBuilder();
-            sb.append(i).append("-").append(i+1);
+            sb.append(i).append("-").append(i + 1);
             data[row][0] = sb.toString();
             sb.setLength(0);
 
 
             int offset = row;
-            int j=1;
+            int j = 1;
             for (Day d : days) {
                 if (d.isWorkingHour(i)) {
                     int idx = offset;
 
                     Gene gene = week.getGene(idx);
                     String numeClient = gene.getValue().toString();
+
                     if (!numeClient.equalsIgnoreCase(Programare.Nobody.NAME)) {
                         String terapie = getTerapieByClientName(numeClient);
                         String terapeut = getTerapeutForTerapie(terapie);
                         sb.append(terapeut).append(" +\n").append(numeClient).append("\n=============\n").append(terapie);
-                    }else{
+                    } else {
                         sb.append(Programare.Nobody.NAME);
                     }
                     data[row][j] = sb.toString();
                     sb.setLength(0);
-
-                }else {
+                } else {
                     data[row][j] = Programare.Nobody.NAME;
                 }
                 j++;
@@ -314,12 +301,6 @@ public class AG {
             }
 
         }
-
-//        for (int i=0;i<10;i++){
-//            for (int j=0;j<8;j++)
-//                System.out.println(data[i][j]);
-//            System.out.println();
-//        }
 
         return data;
     }
