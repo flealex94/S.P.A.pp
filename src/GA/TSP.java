@@ -51,7 +51,7 @@ public class TSP {
     /** Standard parameters for a GeneticAlgorithm */
     private static final int POPULATION_SIZE = 100;
     private static final int GENERATION_LIMIT = 1000;
-    private static final int TASK_HOUR_PER_WEEK = 28;
+    private static final int TASK_HOUR_PER_WEEK = 1;
 
     public static void main() {
         Utils.printHeader();

@@ -26,7 +26,7 @@ public class SalaService {
 
     }
 
-    public List<Sala> getAllClients() {
+    public List<Sala> getAllSalas() {
         System.out.println("Getting all the fking clients, mofo!");
         List<Sala> ret = null;
         try {
