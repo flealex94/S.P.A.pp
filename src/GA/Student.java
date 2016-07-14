@@ -24,14 +24,23 @@ package GA;
  * 
  * @since 2.1
  */
-public abstract class Student {
+public class Student {
     /**
      * Name of the student
      */
     protected String name;
+    
+    protected int oraInceput;
+    protected int oraSfarsit;
 
     public Student(String name) {
         this.name = name;
+    }
+
+    public Student(String name, int oraInceput, int oraSfarsit) {
+        this.name = name;
+        this.oraInceput = oraInceput;
+        this.oraSfarsit = oraSfarsit;
     }
 
     public String getName() {
@@ -52,7 +61,9 @@ public abstract class Student {
      * @return true if the student is busy in that day at the specified hour,
      * else return false
      */
-    public abstract boolean isBusy(Day day, int hour);
+    public boolean isBusy(Day day, int hour){
+        return (hour >=oraInceput && hour <=oraSfarsit);
+    }
 
     /**
      * This class represents the student who never is busy or the concept that

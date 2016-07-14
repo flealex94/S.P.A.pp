@@ -2,12 +2,7 @@ import Database.DatabaseManager;
 import Database.Services.ClientService;
 import Database.Services.TerapeutService;
 import Database.Services.TerapieService;
-import Pojos.Client;
-import Pojos.Terapie;
-import Views.MainFrame;
-
-import javax.swing.*;
-import java.awt.*;
+import GA.AG;
 
 public class App {
 
@@ -38,7 +33,7 @@ public class App {
 //        for(Terapie x : terapieService.getAllTerapies())
 //            System.out.println(x.getNume() + " " + x.getId());
 
-        new MainFrame().setVisible(true);
-
+//        new MainFrame().setVisible(true);
+        AG.Optimizare();
     }
 }

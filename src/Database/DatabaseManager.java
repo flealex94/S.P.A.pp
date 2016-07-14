@@ -1,14 +1,8 @@
 package Database;
 
 
-import Database.Dao.ClientDao;
-import Database.DaoImplementations.ClientDaoImpl;
-import Database.Services.ClientService;
-import Pojos.Client;
-import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.dao.DaoManager;
-import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
 
@@ -20,7 +14,7 @@ public class DatabaseManager {
 
     public static DatabaseManager getInstance() {
         if (instance == null)
-            instance = new DatabaseManager("localhost/SPA", "root", "teodor");
+            instance = new DatabaseManager("localhost/SPA", "root", "test");
         return instance;
     }
 

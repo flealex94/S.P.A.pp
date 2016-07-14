@@ -18,55 +18,45 @@
  */
 package GA;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import jenes.GeneticAlgorithm;
 import jenes.GeneticAlgorithm.ElitismStrategy;
 import jenes.chromosome.AlleleSet;
 import jenes.chromosome.GenericAlleleSet;
-
 import jenes.chromosome.ObjectChromosome;
 import jenes.chromosome.ObjectChromosome.Gene;
-
 import jenes.population.Fitness.SortingMode;
 import jenes.population.Individual;
+import jenes.population.Population;
 import jenes.population.Population.Statistics;
 import jenes.population.Population.Statistics.Group;
-import jenes.population.Population;
-
 import jenes.stage.operator.common.OnePointCrossover;
 import jenes.stage.operator.common.SimpleMutator;
 import jenes.stage.operator.common.TournamentSelector;
-import jenes.tutorials.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This class set-up the algorithm for execution, it includes the main method.
  *
  * @since 2.1
  */
-public class TSP {
+public class AG {
 
     /** Standard parameters for a GeneticAlgorithm */
-    private static final int POPULATION_SIZE = 100;
-    private static final int GENERATION_LIMIT = 1000;
-    private static final int TASK_HOUR_PER_WEEK = 1;
+    private static final int POPULATION_SIZE = 70;
+    private static final int GENERATION_LIMIT = 100;
+    private static final int TASK_HOUR_PER_WEEK = 10;
 
-    public static void main() {
-        Utils.printHeader();
-        System.out.println();
+    public static void Optimizare() {
 
-        System.out.println("TUTORIAL 13:");
-        System.out.println("This tutorial shows an other example in using "
-                + "ObjectChromosome in this case for task planning.");
-        System.out.println();
-        
-        //create the student set
+
         Student[] students = createStudentSet();
         
         //create the week and assign to each day the given operativity hour interval
-        Week week = new Week(9, 21);
+        Week week = new Week(9, 19);
 
         //create the fitness for the problem
         WeekFitness fitness = new WeekFitness(2, false, students, week, TASK_HOUR_PER_WEEK);
@@ -86,6 +76,7 @@ public class TSP {
         ga.setElitismStrategy(ElitismStrategy.WORST);
         ga.evolve();
 
+
         //...get statistics
         Statistics<ObjectChromosome> popStats = ga.getCurrentPopulation().getStatistics();
         GeneticAlgorithm.Statistics algoStats = ga.getStatistics();
@@ -97,7 +88,9 @@ public class TSP {
         System.out.format("found in %d ms.\n", algoStats.getExecutionTime());
         System.out.println();
 
-        Utils.printStatistics(popStats);
+        //Utils.printStatistics(popStats);
+
+        parcurgere(legals.get(0), week);
     }
 
     /**
@@ -106,53 +99,11 @@ public class TSP {
      */
     private static Student[] createStudentSet() {
         Student[] students = {
-            new Student("Jack") {
-                @Override
-                public boolean isBusy(Day day, int hour) {
-                    if (day == Day.MONDAY || day == Day.WEDNESDAY || day == Day.FRIDAY) {
-                        if (hour == 8 || hour == 9 || hour == 10 || hour == 11) {
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-            },
-            new Student("Bill") {
-                @Override
-                public boolean isBusy(Day day, int hour) {
-
-                    if (day == Day.MONDAY || day == Day.WEDNESDAY || day == Day.FRIDAY) {
-                        if (hour == 15 || hour == 16 || hour == 17 || hour == 18) {
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-            },
-            new Student("Chris") {
-                @Override
-                public boolean isBusy(Day day, int hour) {
-                    if (day == Day.TUESDAY || day == Day.THURSDAY || day == Day.SATURDAY) {
-                        if (hour == 8 || hour == 9 || hour == 10 || hour == 11) {
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-            },
-            new Student("John") {
-                @Override
-                public boolean isBusy(Day day, int hour) {
-                    if (day == Day.TUESDAY || day == Day.THURSDAY || day == Day.SATURDAY) {
-                        if (hour == 15 || hour == 16 || hour == 17 || hour == 18) {
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-            }
+                new Student("gigel",10,18),
+                new Student("purcel",9,15),
+                new Student("chris",13,19)
         };
-        
+
         return students;
     }
 
@@ -315,5 +266,46 @@ public class TSP {
         sb.append("\n");
 
         return sb.toString();
+    }
+
+    public static void parcurgere(Individual<ObjectChromosome> individual, Week w){
+
+        ObjectChromosome week = individual.getChromosome();
+
+        int minH = 24;
+        int maxH = 1;
+
+        Day[] days = w.getDays();
+        for (Day d : days) {
+            if (minH > d.getStart()) {
+                minH = d.getStart();
+            }
+
+            if (maxH < d.getEnd()) {
+                maxH = d.getEnd();
+            }
+        }
+
+        int row = 0;
+        for (int i = minH; i < maxH; i++, row++) {
+
+            System.out.print(i+" ");
+
+            int offset = row;
+            for (Day d : days) {
+                if (d.isWorkingHour(i)) {
+                    int idx = offset;
+
+                    Gene gene = week.getGene(idx);
+                    Object value = gene.getValue();
+
+                    if (!value.toString().equalsIgnoreCase(Student.Nobody.NAME))
+                        System.out.println(value.toString());
+
+                }
+                offset += d.getHourInDay();
+            }
+
+        }
     }
 }
