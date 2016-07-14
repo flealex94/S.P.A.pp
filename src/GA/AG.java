@@ -50,20 +50,19 @@ public class AG {
     private static final int GENERATION_LIMIT = 100;
     private static final int TASK_HOUR_PER_WEEK = 10;
 
-    public static void Optimizare() {
+    public static Object[][] Optimizare() {
 
-
-        Student[] students = createStudentSet();
+        Programare[] programares = createProgramareSet();
         
         //create the week and assign to each day the given operativity hour interval
         Week week = new Week(9, 19);
 
         //create the fitness for the problem
-        WeekFitness fitness = new WeekFitness(2, false, students, week, TASK_HOUR_PER_WEEK);
+        WeekFitness fitness = new WeekFitness(2, false, programares, week, TASK_HOUR_PER_WEEK);
         fitness.setSortingMode(SortingMode.CROWDING);
 
         //create the sample individual for the population
-        Individual<ObjectChromosome> sample = generateIndividual(students, week);
+        Individual<ObjectChromosome> sample = generateIndividual(programares, week);
         Population<ObjectChromosome> pop = new Population<ObjectChromosome>(sample, POPULATION_SIZE);
 
         //create the genetic algorithm in a usual way
@@ -76,55 +75,57 @@ public class AG {
         ga.setElitismStrategy(ElitismStrategy.WORST);
         ga.evolve();
 
-
         //...get statistics
         Statistics<ObjectChromosome> popStats = ga.getCurrentPopulation().getStatistics();
         GeneticAlgorithm.Statistics algoStats = ga.getStatistics();
 
         Group<ObjectChromosome> legals = popStats.getGroup(Population.LEGALS);
+        Individual<ObjectChromosome> individual = legals.get(0);
 
         System.out.println("Solution: ");
-        System.out.println(prettyPrinter(legals.get(0), week));
+        System.out.println(prettyPrinter(individual, week));
         System.out.format("found in %d ms.\n", algoStats.getExecutionTime());
         System.out.println();
 
         //Utils.printStatistics(popStats);
 
-        parcurgere(legals.get(0), week);
+        Object[][] data = extractObjFromIndividual(individual,week);
+
+        return data;
     }
 
     /**
-     * Create the student set considered in the problem
-     * @return 
+     * Cream setul de programari ce urmeaza a fi procesate
+     * @return
      */
-    private static Student[] createStudentSet() {
-        Student[] students = {
-                new Student("gigel",10,18),
-                new Student("purcel",9,15),
-                new Student("chris",13,19)
+    private static Programare[] createProgramareSet() {
+        Programare[] programares = {
+                new Programare("gigel",10,18),
+                new Programare("purcel",9,15),
+                new Programare("chris",13,19)
         };
 
-        return students;
+        return programares;
     }
 
     /**
      * This method creates a template of Individual for the first population to evolve.
      *
-     * @param s the array representing students that are living in the house
-     * @param w the week of interest for planning
+     * @param p colectie de programari ce urmeaza a fi procesate
+     * @param w saptamana in care se realizeaza planificarea
      *
-     * @return an Individual composed by an ObjectChromosome where each gene
-     * represent a given hour in the day and it will contain the student
-     * assigned to perform task in that temporal slise.
+     * @return un Individual format dintr-un ObjectChromosome unde fiecare gena
+     * reprezinta o ora intr-o zi in care Clientul este programat
+     * sa beneficieze de terapia dorita.
      */
-    private static Individual<ObjectChromosome> generateIndividual(Student[] s, Week w) {
+    private static Individual<ObjectChromosome> generateIndividual(Programare[] p, Week w) {
 
         List<AlleleSet> genes = new ArrayList<AlleleSet>();
         for (int i = 0; i < w.getDayCount(); i++) {	//create the alphabet for the week
             Day d = w.getDay(i);
 
             //...each hour is an AlleleSet
-            List< AlleleSet<Student> > alphabet = getDayAlphabet(d, s);
+            List< AlleleSet<Programare> > alphabet = getDayAlphabet(d, p);
             genes.addAll(alphabet);
         }
 
@@ -132,20 +133,17 @@ public class AG {
     }
 
     /**
-     * This method create the alphabet of students (a list of AlleleSet) for 
-     * each hour in the given day
+     * Metoda creeaza alfabetul de Clienti pentru fiecare ora a zilei furnizate
      *
-     * @param student an array of the students that are living in the house 
-     * (candidate for task execution)
-     * @return a list that contains an alphabet for each legal temporal slice 
-     * in the day; the legal slices are those in which the students can make some
-     * task according to their availability
+     * @param programare  colectie de programari ce urmeaza a fi procesate
+     * (candidati pentru programare)
+     * @return o lista ce contine alfabetul pentru fiecare interval de timp fezabil
      */
-    private static List< AlleleSet<Student>> getDayAlphabet(Day d, Student[] student) {
+    private static List< AlleleSet<Programare>> getDayAlphabet(Day d, Programare[] programare) {
 
-        List<AlleleSet<Student>> alphabet = new ArrayList<AlleleSet<Student>>();
+        List<AlleleSet<Programare>> alphabet = new ArrayList<AlleleSet<Programare>>();
         for (int i = 0; i < d.getHourInDay(); i++) {
-            AlleleSet<Student> al = createAlleleSet(student, d, d.getStart() + i);
+            AlleleSet<Programare> al = createAlleleSet(programare, d, d.getStart() + i);
             alphabet.add(al); //add the alphabet for hour start+i
         }
 
@@ -153,39 +151,31 @@ public class AG {
     }
 
     /**
-     * This method create an AlleleSet according to the student's agenda. In particular
-     * the allele set represent the availability of the students for the given hour and 
-     * day passed as arguments.
+     * Aceasta metoda creeaza un AlleleSet ce corespunde cu intervalele de disponibilitate ale Clientului
      *
-     * @param student the students to verify availability
-     * @param hour the hour in which we test if the students are available.
+     * @param programare colectie de programari ce sunt verificate
+     * @param hour ora din zi in care verificam daca sunt disponibili Clientii
      * 
-     * @return an AlleleSet with only the free students for that hour and day
+     * @return un AlleleSet cu Clientii diponibili la acea ora din zi
      */
-    private static AlleleSet<Student> createAlleleSet(Student[] student, Day d, int hour) {
+    private static AlleleSet<Programare> createAlleleSet(Programare[] programare, Day d, int hour) {
 
-        Set<Student> freeStudents = new HashSet<Student>();
+        Set<Programare> freeProgramares = new HashSet<Programare>();
 
-        //the student "nobody" is present... 
-        freeStudents.add(new Student.Nobody());
+        //the programare "nobody" is present...
+        freeProgramares.add(new Programare.Nobody());
 
-        for (int k = 0; k < student.length; k++) {
-            if (!student[k].isBusy(d, hour)) {
-                freeStudents.add(student[k]);
+        for (int k = 0; k < programare.length; k++) {
+            if (programare[k].isAvailable(d, hour)) {
+                freeProgramares.add(programare[k]);
             }
         }
 
         //the allele set is composed by all of the students available at given time
-        return new GenericAlleleSet<Student>(freeStudents);
+        return new GenericAlleleSet<Programare>(freeProgramares);
     }
 
-    /**
-     * Print the calendar according to the individual provided as input
-     *
-     * @param individual the individual representing the solution to print
-     * @param w the week of interest
-     * @return the printable string
-     */
+
     private static String prettyPrinter(Individual<ObjectChromosome> individual, Week w) {
 
         ObjectChromosome week = individual.getChromosome();
@@ -250,7 +240,7 @@ public class AG {
                     sb.append(value.toString());
 
                 } else {
-                    sb.append(Student.Nobody.NAME);
+                    sb.append(Programare.Nobody.NAME);
                 }
                 sb.append("\t| ");
                 offset += d.getHourInDay();
@@ -268,7 +258,7 @@ public class AG {
         return sb.toString();
     }
 
-    public static void parcurgere(Individual<ObjectChromosome> individual, Week w){
+    public static Object[][] extractObjFromIndividual(Individual<ObjectChromosome> individual, Week w){
 
         ObjectChromosome week = individual.getChromosome();
 
@@ -286,10 +276,83 @@ public class AG {
             }
         }
 
+        Object[][] data = new Object[maxH-minH][8];
+
+
         int row = 0;
         for (int i = minH; i < maxH; i++, row++) {
 
-            System.out.print(i+" ");
+            StringBuilder sb = new StringBuilder();
+            sb.append(i).append("-").append(i+1);
+            data[row][0] = sb.toString();
+            sb.setLength(0);
+
+
+            int offset = row;
+            int j=1;
+            for (Day d : days) {
+                if (d.isWorkingHour(i)) {
+                    int idx = offset;
+
+                    Gene gene = week.getGene(idx);
+                    String numeClient = gene.getValue().toString();
+                    if (!numeClient.equalsIgnoreCase(Programare.Nobody.NAME)) {
+                        String terapie = getTerapieByClientName(numeClient);
+                        String terapeut = getTerapeutForTerapie(terapie);
+                        sb.append(terapeut).append(" +\n").append(numeClient).append("\n=============\n").append(terapie);
+                    }else{
+                        sb.append(Programare.Nobody.NAME);
+                    }
+                    data[row][j] = sb.toString();
+                    sb.setLength(0);
+
+                }else {
+                    data[row][j] = Programare.Nobody.NAME;
+                }
+                j++;
+                offset += d.getHourInDay();
+            }
+
+        }
+
+//        for (int i=0;i<10;i++){
+//            for (int j=0;j<8;j++)
+//                System.out.println(data[i][j]);
+//            System.out.println();
+//        }
+
+        return data;
+    }
+
+    private static String getTerapeutForTerapie(String terapie) {
+        return "terapeutul surd";
+    }
+
+    private static String getTerapieByClientName(Object numeClient) {
+        return "masajul curului";
+    }
+
+    private static void print(Individual<ObjectChromosome> individual, Week w) {
+
+        ObjectChromosome week = individual.getChromosome();
+
+        int minH = 24;
+        int maxH = 1;
+
+        Day[] days = w.getDays();
+        for (Day d : days) {
+            if (minH > d.getStart()) {
+                minH = d.getStart();
+            }
+
+            if (maxH < d.getEnd()) {
+                maxH = d.getEnd();
+            }
+        }
+
+        //renders the rows in the table
+        int row = 0;
+        for (int i = minH; i < maxH; i++, row++) {
 
             int offset = row;
             for (Day d : days) {
@@ -298,14 +361,18 @@ public class AG {
 
                     Gene gene = week.getGene(idx);
                     Object value = gene.getValue();
+                    System.out.println(value.toString());
 
-                    if (!value.toString().equalsIgnoreCase(Student.Nobody.NAME))
-                        System.out.println(value.toString());
+                } else {
 
                 }
+
                 offset += d.getHourInDay();
             }
 
+
         }
+
+
     }
 }

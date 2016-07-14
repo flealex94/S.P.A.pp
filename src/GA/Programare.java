@@ -19,27 +19,42 @@
 package GA;
 
 /**
- * Rappresent an abstraction of a student who is bound. A student has an agenda
- * that must be mapped by overriding the method isBusy()
- * 
- * @since 2.1
+ * Abstractizarea unei programari fixate
+ *
+ *
  */
-public class Student {
-    /**
-     * Name of the student
-     */
+public class Programare {
+
     protected String name;
-    
+
+    //intervale disponibilitate
     protected int oraInceput;
     protected int oraSfarsit;
 
-    public Student(String name) {
+    public Programare(String name) {
         this.name = name;
     }
 
-    public Student(String name, int oraInceput, int oraSfarsit) {
+    public Programare(String name, int oraInceput, int oraSfarsit) {
         this.name = name;
         this.oraInceput = oraInceput;
+        this.oraSfarsit = oraSfarsit;
+    }
+
+
+    public int getOraInceput() {
+        return oraInceput;
+    }
+
+    public void setOraInceput(int oraInceput) {
+        this.oraInceput = oraInceput;
+    }
+
+    public int getOraSfarsit() {
+        return oraSfarsit;
+    }
+
+    public void setOraSfarsit(int oraSfarsit) {
         this.oraSfarsit = oraSfarsit;
     }
 
@@ -52,35 +67,26 @@ public class Student {
     }
 
     /**
-     * This method maps the student's agenda, it tells us if the student is busy
-     * or not
+     * Metoda ne spune daca un Client este disponibil
      *
-     * @param day the day of the week in which we check if the student is busy
-     * @param hour the hour of the day in which we check if the student is busy.
-     * This parameter must be in the interval 0-24
-     * @return true if the student is busy in that day at the specified hour,
+     * @param day ziua saptamanii in care verificam disponibilitatea
+     * @param hour ora din zi in care verificam daca este disponibil Clientul
+     * Acest paramentru trebuie sa apartina intervalului 0-24
+     * @return true daca Clientul este disponibil la acea ora,
      * else return false
      */
-    public boolean isBusy(Day day, int hour){
+    public boolean isAvailable(Day day, int hour){
         return (hour >=oraInceput && hour <=oraSfarsit);
     }
 
-    /**
-     * This class represents the student who never is busy or the concept that
-     * nobody does something
-     *
-     * @author Roberto Falzarano <robertofalzarano@gmail.com>
-     *
-     */
+
     @Override
     public String toString() {
         return this.name;
     }
 
-    /**
-     * Default class for "nobody" 
-     */
-    public static final class Nobody extends Student {
+
+    public static final class Nobody extends Programare {
 
         public final static String NAME = "-";
 
@@ -88,8 +94,8 @@ public class Student {
             super(Nobody.NAME);
         }
 
-        public boolean isBusy(Day day, int hour) {
-            return false; //he is free!
+        public boolean isAvailable(Day day, int hour) {
+            return false; //e liber
         }
     }
 }

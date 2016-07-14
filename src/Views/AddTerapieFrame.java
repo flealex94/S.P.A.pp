@@ -35,5 +35,26 @@ public class AddTerapieFrame extends JFrame {
             }
         });
 
+        adaugăButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                DefaultListModel listModel = (DefaultListModel) list1.getModel();
+                listModel.addElement(textField2.getText());
+            }
+        });
+
+        salveazăButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("terapie adaugata!");
+
+                textField1.setText("");
+                textField2.setText("");
+                DefaultListModel listModel = (DefaultListModel) list1.getModel();
+                listModel.removeAllElements();
+
+            }
+        });
     }
 }

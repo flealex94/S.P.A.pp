@@ -1,12 +1,12 @@
 package Views;
 
+import GA.AG;
 import Utils.AppUtils;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -52,6 +52,8 @@ public class AddProgramareFrame extends JFrame {
 
         inapoiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                AG.Optimizare();
+
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new MainFrame();
                 dispose(); //Destroy the JFrame object
@@ -59,6 +61,34 @@ public class AddProgramareFrame extends JFrame {
             }
         });
 
+        adaugăIntervalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+            }
+        });
+
+        ștergeIntervalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                System.out.println("interval sters!");
+            }
+        });
+
+        salveazăButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                textField1.setText("");
+                orăÎnceputSpinner.setValue(new Integer(0));
+                spinner1.setValue(new Integer(0));
+                DefaultListModel listModel = (DefaultListModel) dateDisponibileList.getModel();
+                listModel.removeAllElements();
+            }
+        });
     }
 
     private void createUIComponents() {

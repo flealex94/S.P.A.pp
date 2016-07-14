@@ -1,6 +1,5 @@
 package Pojos;
 
-import Database.DaoImplementations.ClientDaoImpl;
 import Database.DaoImplementations.ProgramareDaoImpl;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -27,6 +26,10 @@ public class Programare {
     @DatabaseField(columnName = "data", canBeNull = false)
     private Date dataProgramare;
 
+    //intervale disponibilitate
+
+    protected int oraInceput;
+    protected int oraSfarsit;
     // constructors
     public Programare() {}
 

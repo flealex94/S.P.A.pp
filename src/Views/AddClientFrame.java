@@ -1,5 +1,6 @@
 package Views;
 
+import Pojos.Client;
 import Utils.AppUtils;
 
 import javax.swing.*;
@@ -33,6 +34,30 @@ public class AddClientFrame extends JFrame{
                 JFrame nextFrame = new AddProgramareFrame();
                 dispose(); //Destroy the JFrame object
                 nextFrame.setVisible(true);
+            }
+        });
+
+        salveazăButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Client c= new Client(textField1.getText(),textField2.getText(),textField4.getText(),textField3.getText(),comboBox1.getSelectedItem().toString());
+                System.out.println("Add new client!!!");
+
+                setVisible(false); //you can't see me!
+                JFrame nextFrame = new AddProgramareFrame();
+                dispose(); //Destroy the JFrame object
+                nextFrame.setVisible(true);
+            }
+        });
+
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                textField1.setText("");
+                textField2.setText("");
+                textField3.setText("");
+                textField4.setText("");
             }
         });
     }

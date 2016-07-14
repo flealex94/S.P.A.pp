@@ -40,13 +40,7 @@
             <constraints/>
             <properties>
               <font size="14"/>
-              <model>
-                <item value="29-iun-16"/>
-                <item value=""/>
-                <item value="01-iul-16"/>
-                <item value=""/>
-                <item value="04-iul-16"/>
-              </model>
+              <model/>
             </properties>
           </component>
         </children>
