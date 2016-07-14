@@ -19,7 +19,25 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar!/" />
+          <root url="jar://$MODULE_DIR$/deps/ormlite-core-4.48.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/deps/ormlite-jdbc-4.48.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/deps/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

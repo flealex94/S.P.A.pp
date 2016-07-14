@@ -28,7 +28,6 @@ public class ConfigurationFrame extends JFrame {
         AppUtils.centerFrame(this);
 
         inapoiButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new MainFrame();
@@ -38,7 +37,6 @@ public class ConfigurationFrame extends JFrame {
         });
 
         addTerapeutButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new AddTerapeutFrame();
@@ -48,7 +46,6 @@ public class ConfigurationFrame extends JFrame {
         });
 
         addTerapieButton.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new AddTerapieFrame();
