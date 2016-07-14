@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
 
@@ -65,6 +66,10 @@ public class AddProgramareFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                Date selectedDate = (Date) JDatePickerImpl1.getModel().getValue();
+                Calendar c = Calendar.getInstance();
+                c.setTime(selectedDate);
+                int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); // SUNDAY - 1 ... SAT - 7
 
             }
         });
@@ -89,6 +94,12 @@ public class AddProgramareFrame extends JFrame {
                 listModel.removeAllElements();
             }
         });
+
+
+
+
+
+
     }
 
     private void createUIComponents() {
