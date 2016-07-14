@@ -1,17 +1,14 @@
 package Views;
 
+import GA.AG;
 import Utils.AppUtils;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
-import javax.swing.event.CellEditorListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.EventObject;
 
 
 public class VizualizationFrame extends JFrame {
@@ -54,6 +51,7 @@ public class VizualizationFrame extends JFrame {
             "Duminică"
         };
 
+
         // interval orar, luni, marti, miercuri, joi, vineri, sambata, duminica
         Object[][] data = {
                 {"9-10", "Client 1 + \nTerapeut 1 = \nTerapie 1", "", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", ""},
@@ -67,6 +65,8 @@ public class VizualizationFrame extends JFrame {
                 {"17-18", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", "", "", ""},
                 {"18-19", "", "Grigore Costache + \nValentin Ionescu = \nMasaj reflexogen", "", "", "", "", ""}
         };
+
+        data = AG.Optimizare();
 
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
 
@@ -91,6 +91,7 @@ public class VizualizationFrame extends JFrame {
         table1.getTableHeader().setReorderingAllowed(false);
     }
 
+
     public class TextAreaRenderer extends JTextArea
             implements TableCellRenderer {
         JTextArea textarea;
@@ -101,6 +102,7 @@ public class VizualizationFrame extends JFrame {
         public Component getTableCellRendererComponent(JTable table, Object value,
                                                        boolean isSelected, boolean hasFocus,
                                                        int row, int column) {
+            
             this.setText((String) value);
             this.setCaretPosition(0);
             return this;

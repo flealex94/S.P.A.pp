@@ -66,10 +66,7 @@
           <component id="d639d" class="javax.swing.JList" binding="list1" default-binding="true">
             <constraints/>
             <properties>
-              <model>
-                <item value="Masaj reflexogen"/>
-                <item value="Masaj de relaxare"/>
-              </model>
+              <model/>
             </properties>
           </component>
         </children>

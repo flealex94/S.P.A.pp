@@ -59,11 +59,7 @@
             <constraints/>
             <properties>
               <font size="16"/>
-              <model>
-                <item value="Ulei de masaj lent"/>
-                <item value="Ulei de masaj brutal"/>
-                <item value="Pat cu puf de pasare exotica"/>
-              </model>
+              <model/>
             </properties>
           </component>
         </children>

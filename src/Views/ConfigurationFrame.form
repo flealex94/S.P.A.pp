@@ -41,11 +41,7 @@
             <constraints/>
             <properties>
               <font size="20"/>
-              <model>
-                <item value="Masaj de relaxare"/>
-                <item value="Drenaj limfatic"/>
-                <item value="Masaj reflexogen"/>
-              </model>
+              <model/>
             </properties>
           </component>
         </children>
@@ -61,11 +57,7 @@
             <constraints/>
             <properties>
               <font size="20"/>
-              <model>
-                <item value="Virgil Costache"/>
-                <item value="Alex Georgescu"/>
-                <item value="Valentin Ionescu"/>
-              </model>
+              <model/>
             </properties>
           </component>
         </children>

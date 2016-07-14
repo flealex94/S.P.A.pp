@@ -29,8 +29,8 @@ public class Client {
         // ORMLite needs a no-arg constructor
     }
 
-    public Client(int id, String nume, String prenume, String telefon, String email, String sex) {
-        this.id = id;
+    public Client(String nume, String prenume, String telefon, String email, String sex) {
+
         this.nume = nume;
         this.prenume = prenume;
         this.telefon = telefon;

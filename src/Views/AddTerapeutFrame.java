@@ -36,6 +36,30 @@ public class AddTerapeutFrame extends JFrame {
                 nextFrame.setVisible(true);
             }
         });
+
+        resetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                textField1.setText("");
+                textField2.setText("");
+                DefaultListModel listModel = (DefaultListModel) list1.getModel();
+                listModel.removeAllElements();
+            }
+        });
+
+        salveazăButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("terapeut adaugat!");
+
+
+                textField1.setText("");
+                textField2.setText("");
+                DefaultListModel listModel = (DefaultListModel) list1.getModel();
+                listModel.removeAllElements();
+            }
+        });
     }
 
 }
