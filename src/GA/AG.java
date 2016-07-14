@@ -103,6 +103,7 @@ public class AG {
                 new Programare("gigel",10,18),
                 new Programare("purcel",9,15),
                 new Programare("chris",13,19)
+
         };
 
         return programares;

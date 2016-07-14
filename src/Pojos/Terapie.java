@@ -15,14 +15,18 @@ public class Terapie {
     private int id;
 
     @DatabaseField(columnName = "Nume")
-    private String Nume;
+    private String nume;
 
     // constructors
     public Terapie() {}
 
     public Terapie(int id, String nume) {
         this.id = id;
-        Nume = nume;
+        nume = nume;
+    }
+
+    public String toString() {
+        return nume;
     }
 
     // setters and getters
@@ -35,10 +39,10 @@ public class Terapie {
     }
 
     public String getNume() {
-        return Nume;
+        return nume;
     }
 
-    public void setNume(String nume) {
-        Nume = nume;
+    public void setNume(String nume) { nume = nume;
     }
+
 }

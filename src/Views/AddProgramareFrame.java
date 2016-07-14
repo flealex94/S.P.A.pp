@@ -1,20 +1,22 @@
 package Views;
 
 import GA.AG;
+import GA.Programare;
+import Pojos.Terapie;
 import Utils.AppUtils;
+import com.j256.ormlite.stmt.query.In;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
+import javax.swing.event.ListDataListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Properties;
-
+import java.util.*;
 
 
 public class AddProgramareFrame extends JFrame {
@@ -42,6 +44,11 @@ public class AddProgramareFrame extends JFrame {
         AppUtils.setFrameDimension(this);
         AppUtils.centerFrame(this);
 
+        DefaultListModel<Interval> intervalsModel = new DefaultListModel<Interval>();
+        dateDisponibileList.setModel(intervalsModel);
+
+        comboBox1.setModel(new DefaultComboBoxModel(AppUtils.getLocalTerapies().toArray()));
+
         adaugaClientButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
@@ -53,8 +60,6 @@ public class AddProgramareFrame extends JFrame {
 
         inapoiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                AG.Optimizare();
-
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new MainFrame();
                 dispose(); //Destroy the JFrame object
@@ -67,10 +72,21 @@ public class AddProgramareFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 Date selectedDate = (Date) JDatePickerImpl1.getModel().getValue();
-                Calendar c = Calendar.getInstance();
-                c.setTime(selectedDate);
-                int dayOfWeek = c.get(Calendar.DAY_OF_WEEK); // SUNDAY - 1 ... SAT - 7
+                int oraInceput = (int)orăÎnceputSpinner.getValue();
+                int oraFinal = (int)spinner1.getValue();
 
+                if (oraInceput >= 9 && oraFinal <= 19 && selectedDate != null) {
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(selectedDate);
+                    intervalsModel.addElement(
+                            new Interval(
+                                    oraInceput,
+                                    oraFinal,
+                                    selectedDate,
+                                    AppUtils.daysOfWeek[c.get(Calendar.DAY_OF_WEEK)]
+                            )
+                    );
+                }
             }
         });
 
@@ -86,7 +102,29 @@ public class AddProgramareFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                String clientName = textField1.getText();
+                String terapyName = ((Terapie)comboBox1.getSelectedItem()).getNume();
+                HashMap<String, Vector<Integer>> intervaleDisponibilitate = new HashMap<String, Vector<Integer>>();
+                for(int i = 0; i < 7;i ++)
+                    intervaleDisponibilitate.put(AppUtils.daysOfWeek[i], new Vector<Integer>());
 
+                Calendar c = Calendar.getInstance();
+
+                for (int index = 0; index < intervalsModel.getSize(); index ++) {
+                    Interval interval = intervalsModel.getElementAt(index);
+                    c.setTime(interval.data);
+                    String day = AppUtils.daysOfWeek[c.get(Calendar.DAY_OF_WEEK)];
+                    Vector<Integer> intervalsVector = intervaleDisponibilitate.get(day);
+                    for (int i = interval.oraInceput; i < interval.oraFinal; i++ )
+                        intervalsVector.add(i);
+                }
+
+                System.out.println(intervaleDisponibilitate);
+
+                Programare nouaProgramare = new Programare(clientName, intervaleDisponibilitate);
+                AppUtils.addProgramare(nouaProgramare);
+
+                //clean up phase
                 textField1.setText("");
                 orăÎnceputSpinner.setValue(new Integer(0));
                 spinner1.setValue(new Integer(0));
@@ -94,12 +132,6 @@ public class AddProgramareFrame extends JFrame {
                 listModel.removeAllElements();
             }
         });
-
-
-
-
-
-
     }
 
     private void createUIComponents() {
@@ -132,3 +164,27 @@ public class AddProgramareFrame extends JFrame {
     }
 
 }
+
+class Interval {
+    int oraInceput, oraFinal;
+    Date data;
+    String day;
+
+    public Interval() {
+        data = new Date();
+        oraFinal = oraInceput = 0;
+    }
+
+    public Interval(int oraInceput, int oraFinal, Date data, String day) {
+        this.oraInceput = oraInceput;
+        this.oraFinal = oraFinal;
+        this.data = data;
+        this.day = day;
+    }
+
+    public String toString() {
+        return day + " de la " + oraInceput + " pana la " + oraFinal;
+    }
+
+}
+

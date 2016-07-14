@@ -1,5 +1,7 @@
 package Views;
 
+import Database.DatabaseManager;
+import Database.Services.ClientService;
 import Pojos.Client;
 import Utils.AppUtils;
 
@@ -40,8 +42,12 @@ public class AddClientFrame extends JFrame{
         salveazăButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Client c= new Client(textField1.getText(),textField2.getText(),textField4.getText(),textField3.getText(),comboBox1.getSelectedItem().toString());
+
+                ClientService cs = new ClientService(DatabaseManager.getInstance().getConn());
+
+                Client client = new Client(textField1.getText(),textField2.getText(),textField4.getText(),textField3.getText(),comboBox1.getSelectedItem().toString());
                 System.out.println("Add new client!!!");
+                cs.saveClient(client);
 
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new AddProgramareFrame();
@@ -61,4 +67,5 @@ public class AddClientFrame extends JFrame{
             }
         });
     }
+
 }

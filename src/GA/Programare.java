@@ -18,6 +18,9 @@
  */
 package GA;
 
+import java.util.HashMap;
+import java.util.Vector;
+
 /**
  * Abstractizarea unei programari fixate
  *
@@ -28,11 +31,19 @@ public class Programare {
     protected String name;
 
     //intervale disponibilitate
+    HashMap<String, Vector<Integer>> intervaleDisponibile;
+
     protected int oraInceput;
     protected int oraSfarsit;
 
     public Programare(String name) {
         this.name = name;
+    }
+
+
+    public Programare(String name, HashMap<String, Vector<Integer>> intervaleDisponibile) {
+        this.name = name;
+        this.intervaleDisponibile = intervaleDisponibile;
     }
 
     public Programare(String name, int oraInceput, int oraSfarsit) {

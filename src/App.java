@@ -2,6 +2,7 @@ import Database.DatabaseManager;
 import Database.Services.ClientService;
 import Database.Services.TerapeutService;
 import Database.Services.TerapieService;
+import Utils.AppUtils;
 import Views.MainFrame;
 
 public class App {
@@ -18,6 +19,11 @@ public class App {
         ClientService clientService = new ClientService(dbManager.getConn());
         TerapieService terapieService = new TerapieService(dbManager.getConn());
         TerapeutService terapeutService = new TerapeutService(dbManager.getConn());
+
+        System.out.println(AppUtils.getLocalClients());
+        System.out.println(AppUtils.getLocalTerapeuts());
+        System.out.println(AppUtils.getLocalTerapies());
+
 
 //        System.out.println(clientService.getAllClients());
 //        System.out.println(terapieService.getAllTerapies());

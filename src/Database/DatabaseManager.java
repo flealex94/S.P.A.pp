@@ -14,7 +14,7 @@ public class DatabaseManager {
 
     public static DatabaseManager getInstance() {
         if (instance == null)
-            instance = new DatabaseManager("localhost/SPA", "root", "test");
+            instance = new DatabaseManager("localhost/SPA", "root", "teodor");
         return instance;
     }
 
@@ -24,7 +24,6 @@ public class DatabaseManager {
         user = user;
         try {
             conn = new JdbcConnectionSource("jdbc:mysql://" + url, user, password);
-
             System.out.println("Connection to database ........... Success");
         } catch (SQLException e) {
             e.printStackTrace();

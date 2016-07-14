@@ -30,6 +30,10 @@ public class Terapeut {
         this.sex = sex;
     }
 
+    public String toString() {
+        return id + " - " + nume + " - " + prenume + " - " + sex;
+    }
+
 
     // setters and getters
     public int getId() {
@@ -63,4 +67,5 @@ public class Terapeut {
     public void setSex(String sex) {
         this.sex = sex;
     }
+
 }

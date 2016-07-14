@@ -36,4 +36,14 @@ public class ClientService {
         return ret;
     }
 
+    public int saveClient(Client newClient) {
+        int id = -1;
+        try {
+            id = clientStore.create(newClient);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(id);
+        return id;
+    }
 }
