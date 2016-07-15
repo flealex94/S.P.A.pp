@@ -120,7 +120,7 @@ public class AddProgramareFrame extends JFrame {
 
                 Programare nouaProgramare = new Programare(clientName, terapyName, intervaleDisponibilitate);
                 AppUtils.addProgramare(nouaProgramare);
-                System.out.println("Programare adaugata in lista!");
+                System.out.println("Programare adaugata in BD!");
 
                 //clean up phase
                 textField1.setText("");
