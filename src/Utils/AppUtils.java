@@ -4,6 +4,7 @@ import Database.DatabaseManager;
 import Database.Services.ClientService;
 import Database.Services.TerapeutService;
 import Database.Services.TerapieService;
+import GA.Programare;
 import Pojos.Client;
 import Pojos.Terapeut;
 import Pojos.Terapie;
@@ -23,9 +24,8 @@ public class AppUtils {
     static List<Client> clients = null;
     static List<Terapie> terapies = null;
     static List<Terapeut> terapeuti = null;
-    static List<Programare> programari = null;
 
-    static ArrayList<Programare> programariNecalculate = new ArrayList<Programare>();
+    static ArrayList<GA.Programare> programariNecalculate = new ArrayList<>();
 
     public static String[] daysOfWeek = {"Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"};
 
@@ -84,25 +84,25 @@ public class AppUtils {
         return terapeuti;
     }
 
-    public static List<Pojos.Programare> getLocalProgramari() {
-        if (programari == null)
-            fetchDataFromDB();
-        return programari;
-    }
+//    public static List<Pojos.Programare> getLocalProgramari() {
+//        if (programari == null)
+//            fetchDataFromDB();
+//        return programari;
+//    }
 
 
     public static void addProgramare(Programare programare) {
         programariNecalculate.add(programare);
     }
 
-    public static ArrayList<Programare> getProgramariNecalculate() {
+    public static ArrayList<GA.Programare> getProgramariNecalculate() {
         return programariNecalculate;
     }
 
     public static String getTerapieByClientName(String numeClient) {
-        for (Programare programare : programariNecalculate){
+        for (GA.Programare programare : programariNecalculate){
             if (programare.getName().equalsIgnoreCase(numeClient))
-                return programare.getTerapie();
+                return programare.getTerapie().toString();
         }
         return programariNecalculate.get(0).getTerapie();
     }
