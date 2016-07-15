@@ -74,12 +74,13 @@ public class AddProgramareFrame extends JFrame {
                 if (oraInceput >= 9 && oraFinal <= 19 && selectedDate != null) {
                     Calendar c = Calendar.getInstance();
                     c.setTime(selectedDate);
+
                     intervalsModel.addElement(
                             new Interval(
                                     oraInceput,
                                     oraFinal,
                                     selectedDate,
-                                    AppUtils.daysOfWeek[c.get(Calendar.DAY_OF_WEEK)]
+                                    AppUtils.daysOfWeek[c.get(Calendar.DAY_OF_WEEK)-1]
                             )
                     );
                 }
@@ -109,7 +110,7 @@ public class AddProgramareFrame extends JFrame {
                 for (int index = 0; index < intervalsModel.getSize(); index ++) {
                     Interval interval = intervalsModel.getElementAt(index);
                     c.setTime(interval.data);
-                    String day = AppUtils.daysOfWeek[c.get(Calendar.DAY_OF_WEEK)];
+                    String day = AppUtils.daysOfWeek[c.get(Calendar.DAY_OF_WEEK)-1];
                     Vector<Integer> intervalsVector = intervaleDisponibilitate.get(day);
                     for (int i = interval.oraInceput; i < interval.oraFinal; i++ )
                         intervalsVector.add(i);
@@ -117,7 +118,7 @@ public class AddProgramareFrame extends JFrame {
 
                 //System.out.println(intervaleDisponibilitate);
 
-                Programare nouaProgramare = new Programare(clientName, intervaleDisponibilitate);
+                Programare nouaProgramare = new Programare(clientName, terapyName, intervaleDisponibilitate);
                 AppUtils.addProgramare(nouaProgramare);
                 System.out.println("Programare adaugata in lista!");
 

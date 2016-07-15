@@ -18,9 +18,6 @@
  */
 package GA;
 
-import Pojos.Terapeut;
-import Pojos.Terapie;
-
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -33,8 +30,7 @@ public class Programare {
 
     protected String name;
 
-    Terapie terapie;
-    Terapeut terapeut;
+    String terapie;
     HashMap<String, Vector<Integer>> intervaleDisponibile;
 
 
@@ -44,10 +40,9 @@ public class Programare {
     }
 
 
-    public Programare(String name, Terapie terapie,Terapeut terapeut, HashMap<String, Vector<Integer>> intervaleDisponibile) {
+    public Programare(String name, String terapie, HashMap<String, Vector<Integer>> intervaleDisponibile) {
         this.name = name;
         this.terapie = terapie;
-        this.terapeut = terapeut;
         this.intervaleDisponibile = intervaleDisponibile;
     }
 
@@ -64,21 +59,14 @@ public class Programare {
         this.name = name;
     }
 
-    public Terapie getTerapie() {
+    public String getTerapie() {
         return terapie;
     }
 
-    public void setTerapie(Terapie terapie) {
+    public void setTerapie(String terapie) {
         this.terapie = terapie;
     }
 
-    public Terapeut getTerapeut() {
-        return terapeut;
-    }
-
-    public void setTerapeut(Terapeut terapeut) {
-        this.terapeut = terapeut;
-    }
 
     /**
      * Metoda ne spune daca un Client este disponibil

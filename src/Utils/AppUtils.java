@@ -4,7 +4,6 @@ import Database.DatabaseManager;
 import Database.Services.ClientService;
 import Database.Services.TerapeutService;
 import Database.Services.TerapieService;
-import GA.Programare;
 import Pojos.Client;
 import Pojos.Terapeut;
 import Pojos.Terapie;
@@ -24,7 +23,7 @@ public class AppUtils {
     static List<Client> clients = null;
     static List<Terapie> terapies = null;
     static List<Terapeut> terapeuti = null;
-    static List<Pojos.Programare> programari = null;
+    static List<Programare> programari = null;
 
     static ArrayList<Programare> programariNecalculate = new ArrayList<Programare>();
 
@@ -100,7 +99,7 @@ public class AppUtils {
         return programariNecalculate;
     }
 
-    public static Terapie getTerapieByClientName(String numeClient) {
+    public static String getTerapieByClientName(String numeClient) {
         for (Programare programare : programariNecalculate){
             if (programare.getName().equalsIgnoreCase(numeClient))
                 return programare.getTerapie();

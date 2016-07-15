@@ -18,9 +18,6 @@
  */
 package GA;
 
-import Pojos.Client;
-import Pojos.Terapeut;
-import Pojos.Terapie;
 import Utils.AppUtils;
 import jenes.GeneticAlgorithm;
 import jenes.GeneticAlgorithm.ElitismStrategy;
@@ -37,7 +34,10 @@ import jenes.stage.operator.common.OnePointCrossover;
 import jenes.stage.operator.common.SimpleMutator;
 import jenes.stage.operator.common.TournamentSelector;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * This class set-up the algorithm for execution, it includes the main method.
@@ -292,14 +292,15 @@ public class AG {
 
                     if (!numeClient.equalsIgnoreCase(Programare.Nobody.NAME)) {
 
-                        Terapie terapie = AppUtils.getTerapieByClientName(numeClient);
-                        Terapeut terapeut = AppUtils.getTerapeutForTerapie(terapie.toString());
-                        Client client = AppUtils.getClientByName(numeClient);
-                        Pojos.Programare programare = new Pojos.Programare(1,client.getId(),terapeut.getId(),terapie.getId(),new Date());
+                        String terapie = AppUtils.getTerapieByClientName(numeClient);
+                        System.out.println(terapie);
+//                        Terapeut terapeut = AppUtils.getTerapeutForTerapie(terapie.toString());
+//                        Client client = AppUtils.getClientByName(numeClient);
+//                        Pojos.Programare programare = new Pojos.Programare(1,client.getId(),terapeut.getId(),terapie.getId(),new Date());
                         //programareService.saveProgramare(programare);
                         //System.out.println("Programare adaugata in BD!");
 
-                        sb.append(terapeut.toString()).append(" +\n").append(numeClient).append("\n=============\n").append(terapie.toString());
+                        sb.append(terapie.toString()).append(" +\n").append(numeClient).append("\n=============\n").append(terapie.toString());
                     } else {
                         sb.append(Programare.Nobody.NAME);
                     }
