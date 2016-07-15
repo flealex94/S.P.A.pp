@@ -17,9 +17,9 @@ public class VizualizationFrame extends JFrame {
     private JTable table1;
     private JButton săptămânaAnterioarăButton;
     private JButton săptămânaUrmatoareButton;
-    private JButton reoptimizareButton;
+    private JButton optimizareButton;
     private int currentWeek = 1;
-
+    private Object[][] data;
 
     public VizualizationFrame() {
         // add root component
@@ -33,6 +33,17 @@ public class VizualizationFrame extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new MainFrame();
+                dispose(); //Destroy the JFrame object
+                nextFrame.setVisible(true);
+            }
+        });
+
+        optimizareButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                data = AG.Optimizare();
+                setVisible(false); //you can't see me!
+                JFrame nextFrame = new VizualizationFrame();
                 dispose(); //Destroy the JFrame object
                 nextFrame.setVisible(true);
             }
@@ -53,21 +64,21 @@ public class VizualizationFrame extends JFrame {
 
 
         // interval orar, luni, marti, miercuri, joi, vineri, sambata, duminica
-        Object[][] data = {
-                {"9-10", "Client 1 + \nTerapeut 1 = \nTerapie 1", "", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", ""},
-                {"10-11", "Client 1 + \nTerapeut 2 = \nTerapie 3", "", "", "", "", "", ""},
+        if (AppUtils.getProgramariNecalculate().isEmpty())
+            data = new Object[][]{
+                {"9-10", "", "", "", "", "", "", ""},
+                {"10-11", "", "", "", "", "", "", ""},
                 {"11-12", "", "", "", "", "", "", ""},
-                {"12-13", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", "", "", ""},
+                {"12-13", "", "", "", "", "", "", ""},
                 {"13-14", "", "", "", "", "", "", ""},
-                {"14-15", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", "", "", "Client 1 + \nTerapeut 2 = \nTerapie 3"},
-                {"15-16", "", "", "", "Grigore Costache + \nValentin Ionescu = \nMasaj reflexogen", "", "", "Client 1 + \nTerapeut 2 = \nTerapie 3"},
-                {"16-17", "", "", "", "Grigore Costache + \nValentin Ionescu = \nMasaj reflexogen", "", "", "Client 1 + \nTerapeut 2 = \nTerapie 3"},
-                {"17-18", "", "Grigore Costache + \nAlex Georgescu = \nMasaj de relaxare", "", "", "", "", ""},
-                {"18-19", "", "Grigore Costache + \nValentin Ionescu = \nMasaj reflexogen", "", "", "", "", ""}
-        };
-
-        data = AG.Optimizare();
-
+                {"14-15", "", "", "", "", "", "", ""},
+                {"15-16", "", "", "", "", "", "", ""},
+                {"16-17", "", "", "", "", "", "", ""},
+                {"17-18", "", "", "", "", "", "", ""},
+                {"18-19", "", "", "", "", "", "", ""}
+             };
+        else
+            data = AG.Optimizare();
         DefaultTableModel model = new DefaultTableModel(data, columnNames) {
 
             @Override
