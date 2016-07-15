@@ -18,6 +18,9 @@
  */
 package GA;
 
+import Pojos.Client;
+import Pojos.Terapeut;
+import Pojos.Terapie;
 import Utils.AppUtils;
 import jenes.GeneticAlgorithm;
 import jenes.GeneticAlgorithm.ElitismStrategy;
@@ -34,10 +37,7 @@ import jenes.stage.operator.common.OnePointCrossover;
 import jenes.stage.operator.common.SimpleMutator;
 import jenes.stage.operator.common.TournamentSelector;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * This class set-up the algorithm for execution, it includes the main method.
@@ -280,7 +280,7 @@ public class AG {
             data[row][0] = sb.toString();
             sb.setLength(0);
 
-
+            //ProgramareService programareService =  ProgramareService.getInstance(DatabaseManager.getInstance().getConn());
             int offset = row;
             int j = 1;
             for (Day d : days) {
@@ -291,9 +291,15 @@ public class AG {
                     String numeClient = gene.getValue().toString();
 
                     if (!numeClient.equalsIgnoreCase(Programare.Nobody.NAME)) {
-                        String terapie = getTerapieByClientName(numeClient);
-                        String terapeut = getTerapeutForTerapie(terapie);
-                        sb.append(terapeut).append(" +\n").append(numeClient).append("\n=============\n").append(terapie);
+
+                        Terapie terapie = AppUtils.getTerapieByClientName(numeClient);
+                        Terapeut terapeut = AppUtils.getTerapeutForTerapie(terapie.toString());
+                        Client client = AppUtils.getClientByName(numeClient);
+                        Pojos.Programare programare = new Pojos.Programare(1,client.getId(),terapeut.getId(),terapie.getId(),new Date());
+                        //programareService.saveProgramare(programare);
+                        //System.out.println("Programare adaugata in BD!");
+
+                        sb.append(terapeut.toString()).append(" +\n").append(numeClient).append("\n=============\n").append(terapie.toString());
                     } else {
                         sb.append(Programare.Nobody.NAME);
                     }
@@ -311,13 +317,6 @@ public class AG {
         return data;
     }
 
-    private static String getTerapeutForTerapie(String terapie) {
-        return "terapeutul surd";
-    }
-
-    private static String getTerapieByClientName(Object numeClient) {
-        return "masajul curului";
-    }
 
     private static void print(Individual<ObjectChromosome> individual, Week w) {
 

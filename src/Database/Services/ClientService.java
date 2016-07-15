@@ -8,9 +8,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by teodor-stefu on 7/13/16.
- */
+
 public class ClientService {
 
     private static ClientService instance = null;

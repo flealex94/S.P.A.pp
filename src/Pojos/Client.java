@@ -96,6 +96,6 @@ public class Client {
     }
 
     public String toString() {
-        return id + " " + nume + " "  + prenume;
+        return nume + " "  + prenume;
     }
 }

@@ -24,6 +24,7 @@ public class AppUtils {
     static List<Client> clients = null;
     static List<Terapie> terapies = null;
     static List<Terapeut> terapeuti = null;
+    static List<Pojos.Programare> programari = null;
 
     static ArrayList<Programare> programariNecalculate = new ArrayList<Programare>();
 
@@ -56,10 +57,12 @@ public class AppUtils {
         ClientService clientService = ClientService.getInstance(conn);
         TerapieService terapieService =  TerapieService.getInstance(conn);
         TerapeutService terapeutService =  TerapeutService.getInstance(conn);
+        //ProgramareService programareService = ProgramareService.getInstance(conn);
 
         clients = clientService.getAllClients();
         terapies = terapieService.getAllTerapies();
         terapeuti = terapeutService.getAllTerapeuts();
+        //programari = programareService.getAllProgramari();
 
         System.out.println("\nDate preluate cu succes din baza de date!\n");
     }
@@ -82,6 +85,12 @@ public class AppUtils {
         return terapeuti;
     }
 
+    public static List<Pojos.Programare> getLocalProgramari() {
+        if (programari == null)
+            fetchDataFromDB();
+        return programari;
+    }
+
 
     public static void addProgramare(Programare programare) {
         programariNecalculate.add(programare);
@@ -90,4 +99,42 @@ public class AppUtils {
     public static ArrayList<Programare> getProgramariNecalculate() {
         return programariNecalculate;
     }
+
+    public static Terapie getTerapieByClientName(String numeClient) {
+        for (Programare programare : programariNecalculate){
+            if (programare.getName().equalsIgnoreCase(numeClient))
+                return programare.getTerapie();
+        }
+        return programariNecalculate.get(0).getTerapie();
+    }
+
+    public static Terapeut getTerapeutForTerapie(String numeTerapie) {
+
+        DatabaseManager dbManager = DatabaseManager.getInstance();
+        ConnectionSource conn = dbManager.getConn();
+
+        TerapieService terapieService =  TerapieService.getInstance(conn);
+        TerapeutService terapeutService =  TerapeutService.getInstance(conn);
+        List<Terapeut> terapeutList = terapeutService.getAllTerapeuts();
+
+        for(Terapeut terapeut : terapeutList){
+            for(Terapie terapie : terapieService.getTerapiesForTerapeut(terapeut)){
+                if (terapie.getNume().equalsIgnoreCase(numeTerapie))
+                    return terapeut;
+            }
+        }
+        return terapeutList.get(0);
+    }
+
+    public static Client getClientByName(String numeClient) {
+        List<Client> clientList = ClientService.getInstance(DatabaseManager.getInstance().getConn()).getAllClients();
+
+        for (Client client: clientList){
+            if (client.getNume().equalsIgnoreCase(numeClient))
+                return client;
+        }
+        String[] parts = numeClient.split(" ");
+        return new Client(parts[0],parts[1],"0742736751","Andy@boom.com","M");
+    }
+
 }
