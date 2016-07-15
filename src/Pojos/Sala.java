@@ -1,6 +1,5 @@
 package Pojos;
 
-import Database.DaoImplementations.ClientDaoImpl;
 import Database.DaoImplementations.SalaDaoImpl;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -16,6 +15,10 @@ public class Sala {
 
     // constructors
     public Sala() {}
+
+    public Sala(String nume) {
+        this.nume = nume;
+    }
 
     public Sala(int id, String nume) {
         this.id = id;

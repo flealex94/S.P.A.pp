@@ -1,7 +1,6 @@
 package Pojos;
 
 
-import Database.DaoImplementations.ClientDaoImpl;
 import Database.DaoImplementations.TerapieDaoImpl;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -19,6 +18,10 @@ public class Terapie {
 
     // constructors
     public Terapie() {}
+
+    public Terapie(String nume) {
+        this.nume = nume;
+    }
 
     public Terapie(int id, String nume) {
         this.id = id;

@@ -1,19 +1,15 @@
 package Views;
 
-import GA.AG;
 import GA.Programare;
 import Pojos.Terapie;
 import Utils.AppUtils;
-import com.j256.ormlite.stmt.query.In;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
 import javax.swing.*;
-import javax.swing.event.ListDataListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -119,10 +115,11 @@ public class AddProgramareFrame extends JFrame {
                         intervalsVector.add(i);
                 }
 
-                System.out.println(intervaleDisponibilitate);
+                //System.out.println(intervaleDisponibilitate);
 
                 Programare nouaProgramare = new Programare(clientName, intervaleDisponibilitate);
                 AppUtils.addProgramare(nouaProgramare);
+                System.out.println("Programare adaugata in BD!");
 
                 //clean up phase
                 textField1.setText("");

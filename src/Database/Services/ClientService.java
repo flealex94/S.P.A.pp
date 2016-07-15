@@ -2,6 +2,7 @@ package Database.Services;
 
 import Database.DaoImplementations.ClientDaoImpl;
 import Pojos.Client;
+import Utils.AppUtils;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
@@ -12,9 +13,18 @@ import java.util.List;
  */
 public class ClientService {
 
+    private static ClientService instance = null;
+    ConnectionSource conn = null;
     ClientDaoImpl clientStore;
 
-    public ClientService(ConnectionSource conn) {
+    public static ClientService getInstance(ConnectionSource conn){
+        if (instance == null){
+            instance = new ClientService(conn);
+        }
+        return instance;
+    }
+
+    private ClientService(ConnectionSource conn) {
 
         try {
             clientStore = new ClientDaoImpl(conn);
@@ -25,7 +35,7 @@ public class ClientService {
     }
 
     public List<Client> getAllClients() {
-        System.out.println("Getting all the fking clients, mofo!");
+
         List<Client> ret = null;
         try {
             ret = clientStore.queryForAll();
@@ -40,6 +50,7 @@ public class ClientService {
         int id = -1;
         try {
             id = clientStore.create(newClient);
+            AppUtils.getLocalClients().add(newClient);
         } catch (SQLException e) {
             e.printStackTrace();
         }

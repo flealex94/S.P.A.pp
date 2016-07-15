@@ -33,11 +33,10 @@ public class Programare {
     //intervale disponibilitate
     HashMap<String, Vector<Integer>> intervaleDisponibile;
 
-    protected int oraInceput;
-    protected int oraSfarsit;
 
     public Programare(String name) {
         this.name = name;
+
     }
 
 
@@ -46,28 +45,6 @@ public class Programare {
         this.intervaleDisponibile = intervaleDisponibile;
     }
 
-    public Programare(String name, int oraInceput, int oraSfarsit) {
-        this.name = name;
-        this.oraInceput = oraInceput;
-        this.oraSfarsit = oraSfarsit;
-    }
-
-
-    public int getOraInceput() {
-        return oraInceput;
-    }
-
-    public void setOraInceput(int oraInceput) {
-        this.oraInceput = oraInceput;
-    }
-
-    public int getOraSfarsit() {
-        return oraSfarsit;
-    }
-
-    public void setOraSfarsit(int oraSfarsit) {
-        this.oraSfarsit = oraSfarsit;
-    }
 
     public String getName() {
         return this.name;
@@ -87,7 +64,9 @@ public class Programare {
      * else return false
      */
     public boolean isAvailable(Day day, int hour){
-        return (hour >=oraInceput && hour <=oraSfarsit);
+        Vector<Integer> ore = intervaleDisponibile.get(day.getPrintableName());
+
+        return ore.contains(hour);
     }
 
 
@@ -106,7 +85,7 @@ public class Programare {
         }
 
         public boolean isAvailable(Day day, int hour) {
-            return false; //e liber
+            return true; //e liber
         }
     }
 }

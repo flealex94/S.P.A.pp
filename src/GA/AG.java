@@ -18,6 +18,7 @@
  */
 package GA;
 
+import Utils.AppUtils;
 import jenes.GeneticAlgorithm;
 import jenes.GeneticAlgorithm.ElitismStrategy;
 import jenes.chromosome.AlleleSet;
@@ -45,68 +46,74 @@ import java.util.Set;
  */
 public class AG {
 
-    /** Standard parameters for a GeneticAlgorithm */
+    /**
+     * Standard parameters for a GeneticAlgorithm
+     */
     private static final int POPULATION_SIZE = 70;
     private static final int GENERATION_LIMIT = 100;
     private static final int TASK_HOUR_PER_WEEK = 10;
 
     public static Object[][] Optimizare() {
+        Object[][] data = null;
 
-        Programare[] programares = createProgramareSet();
-        
-        //create the week and assign to each day the given operativity hour interval
-        Week week = new Week(9, 19);
+        if (AppUtils.getProgramariNecalculate().isEmpty())
+            System.out.println("Nu exista programari noi pentru saptamana aceasta!");
+        else {
+            Programare[] programari = createProgramareSet();
 
-        //create the fitness for the problem
-        WeekFitness fitness = new WeekFitness(2, false, programares, week, TASK_HOUR_PER_WEEK);
-        fitness.setSortingMode(SortingMode.CROWDING);
+            //create the week and assign to each day the given operativity hour interval
+            Week week = new Week(9, 19);
 
-        //create the sample individual for the population
-        Individual<ObjectChromosome> sample = generateIndividual(programares, week);
-        Population<ObjectChromosome> pop = new Population<ObjectChromosome>(sample, POPULATION_SIZE);
+            //create the fitness for the problem
+            WeekFitness fitness = new WeekFitness(2, false, programari, week, TASK_HOUR_PER_WEEK);
+            fitness.setSortingMode(SortingMode.CROWDING);
 
-        //create the genetic algorithm in a usual way
-        GeneticAlgorithm<ObjectChromosome> ga =
-                new GeneticAlgorithm<ObjectChromosome>(fitness, pop, GENERATION_LIMIT);
-        ga.addStage(new TournamentSelector<ObjectChromosome>(3));
-        ga.addStage(new OnePointCrossover<ObjectChromosome>(0.7));
-        ga.addStage(new SimpleMutator<ObjectChromosome>(0.02));
+            //create the sample individual for the population
+            Individual<ObjectChromosome> sample = generateIndividual(programari, week);
+            Population<ObjectChromosome> pop = new Population<ObjectChromosome>(sample, POPULATION_SIZE);
 
-        ga.setElitismStrategy(ElitismStrategy.WORST);
-        ga.evolve();
+            //create the genetic algorithm in a usual way
+            GeneticAlgorithm<ObjectChromosome> ga =
+                    new GeneticAlgorithm<ObjectChromosome>(fitness, pop, GENERATION_LIMIT);
+            ga.addStage(new TournamentSelector<ObjectChromosome>(3));
+            ga.addStage(new OnePointCrossover<ObjectChromosome>(0.7));
+            ga.addStage(new SimpleMutator<ObjectChromosome>(0.02));
 
-        //...get statistics
-        Statistics<ObjectChromosome> popStats = ga.getCurrentPopulation().getStatistics();
-        GeneticAlgorithm.Statistics algoStats = ga.getStatistics();
+            ga.setElitismStrategy(ElitismStrategy.WORST);
+            ga.evolve();
 
-        Group<ObjectChromosome> legals = popStats.getGroup(Population.LEGALS);
-        Individual<ObjectChromosome> individual = legals.get(0);
+            //...get statistics
+            Statistics<ObjectChromosome> popStats = ga.getCurrentPopulation().getStatistics();
+            GeneticAlgorithm.Statistics algoStats = ga.getStatistics();
 
-        System.out.println("Solution: ");
-        System.out.println(prettyPrinter(individual, week));
-        System.out.format("found in %d ms.\n", algoStats.getExecutionTime());
-        System.out.println();
+            Group<ObjectChromosome> legals = popStats.getGroup(Population.LEGALS);
+            Individual<ObjectChromosome> individual = legals.get(0);
 
-        //Utils.printStatistics(popStats);
+            System.out.println("Solutie: ");
+            System.out.println(prettyPrinter(individual, week));
+            System.out.format("... gasita in %d ms.\n", algoStats.getExecutionTime());
+            System.out.println();
 
-        Object[][] data = extractObjFromIndividual(individual,week);
+            //Utils.printStatistics(popStats);
 
+            data = extractObjFromIndividual(individual, week);
+        }
         return data;
     }
 
     /**
      * Cream setul de programari ce urmeaza a fi procesate
+     *
      * @return
      */
     private static Programare[] createProgramareSet() {
-        Programare[] programares = {
-                new Programare("gigel",10,18),
-                new Programare("purcel",9,15),
-                new Programare("chris",13,19)
+        ArrayList<Programare> programares = AppUtils.getProgramariNecalculate();
+        Programare[] programari = new Programare[programares.size()];
+        for (int i = 0; i < programares.size(); i++) {
+            programari[i] = programares.get(i);
+        }
 
-        };
-
-        return programares;
+        return programari;
     }
 
     /**
@@ -114,7 +121,6 @@ public class AG {
      *
      * @param p colectie de programari ce urmeaza a fi procesate
      * @param w saptamana in care se realizeaza planificarea
-     *
      * @return un Individual format dintr-un ObjectChromosome unde fiecare gena
      * reprezinta o ora intr-o zi in care Clientul este programat
      * sa beneficieze de terapia dorita.
@@ -122,11 +128,11 @@ public class AG {
     private static Individual<ObjectChromosome> generateIndividual(Programare[] p, Week w) {
 
         List<AlleleSet> genes = new ArrayList<AlleleSet>();
-        for (int i = 0; i < w.getDayCount(); i++) {	//create the alphabet for the week
+        for (int i = 0; i < w.getDayCount(); i++) {    //create the alphabet for the week
             Day d = w.getDay(i);
 
             //...each hour is an AlleleSet
-            List< AlleleSet<Programare> > alphabet = getDayAlphabet(d, p);
+            List<AlleleSet<Programare>> alphabet = getDayAlphabet(d, p);
             genes.addAll(alphabet);
         }
 
@@ -136,11 +142,11 @@ public class AG {
     /**
      * Metoda creeaza alfabetul de Clienti pentru fiecare ora a zilei furnizate
      *
-     * @param programare  colectie de programari ce urmeaza a fi procesate
-     * (candidati pentru programare)
+     * @param programare colectie de programari ce urmeaza a fi procesate
+     *                   (candidati pentru programare)
      * @return o lista ce contine alfabetul pentru fiecare interval de timp fezabil
      */
-    private static List< AlleleSet<Programare>> getDayAlphabet(Day d, Programare[] programare) {
+    private static List<AlleleSet<Programare>> getDayAlphabet(Day d, Programare[] programare) {
 
         List<AlleleSet<Programare>> alphabet = new ArrayList<AlleleSet<Programare>>();
         for (int i = 0; i < d.getHourInDay(); i++) {
@@ -155,8 +161,7 @@ public class AG {
      * Aceasta metoda creeaza un AlleleSet ce corespunde cu intervalele de disponibilitate ale Clientului
      *
      * @param programare colectie de programari ce sunt verificate
-     * @param hour ora din zi in care verificam daca sunt disponibili Clientii
-     * 
+     * @param hour       ora din zi in care verificam daca sunt disponibili Clientii
      * @return un AlleleSet cu Clientii diponibili la acea ora din zi
      */
     private static AlleleSet<Programare> createAlleleSet(Programare[] programare, Day d, int hour) {
@@ -246,7 +251,7 @@ public class AG {
         return sb.toString();
     }
 
-    public static Object[][] extractObjFromIndividual(Individual<ObjectChromosome> individual, Week w){
+    public static Object[][] extractObjFromIndividual(Individual<ObjectChromosome> individual, Week w) {
 
         ObjectChromosome week = individual.getChromosome();
 
@@ -264,7 +269,7 @@ public class AG {
             }
         }
 
-        Object[][] data = new Object[maxH-minH][8];
+        Object[][] data = new Object[maxH - minH][8];
 
 
         int row = 0;

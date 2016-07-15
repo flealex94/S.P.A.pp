@@ -8,16 +8,13 @@ import GA.Programare;
 import Pojos.Client;
 import Pojos.Terapeut;
 import Pojos.Terapie;
+import com.j256.ormlite.support.ConnectionSource;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.*;
 
-/**
- * Created by teodor on 29.06.2016.
- */
 public class AppUtils {
 
     ClientService clientService;
@@ -34,9 +31,9 @@ public class AppUtils {
 
     public static void setFrameDimension(JFrame frame) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        // get 2/3 of the height, and 2/3 of the width
-        int height = (int)(screenSize.height * 2.5 / 3);
-        int width = (int)(screenSize.width * 1.5 / 3);
+        // get 2/3 of the height, and 2.3/3 of the width
+        int height = (int)(screenSize.height * 2 / 3);
+        int width = (int)(screenSize.width * 2.3 / 3);
 
         // set the jframe height and width
         frame.setPreferredSize(new Dimension(width, height));
@@ -54,18 +51,17 @@ public class AppUtils {
 
         // App's Managers
         DatabaseManager dbManager = DatabaseManager.getInstance();
+        ConnectionSource conn = dbManager.getConn();
 
-        ClientService clientService = new ClientService(dbManager.getConn());
-        TerapieService terapieService = new TerapieService(dbManager.getConn());
-        TerapeutService terapeutService = new TerapeutService(dbManager.getConn());
+        ClientService clientService = ClientService.getInstance(conn);
+        TerapieService terapieService =  TerapieService.getInstance(conn);
+        TerapeutService terapeutService =  TerapeutService.getInstance(conn);
 
         clients = clientService.getAllClients();
         terapies = terapieService.getAllTerapies();
         terapeuti = terapeutService.getAllTerapeuts();
 
-        System.out.println(clients);
-        System.out.println(terapies);
-        System.out.println(terapeuti);
+        System.out.println("\nDate preluate cu succes din baza de date!\n");
     }
 
     public static List<Client> getLocalClients() {

@@ -38,6 +38,15 @@ public class Client {
         this.sex = sex;
     }
 
+    public Client(int id, String nume, String prenume, String telefon, String email, String sex) {
+        this.id = id;
+        this.nume = nume;
+        this.prenume = prenume;
+        this.telefon = telefon;
+        this.email = email;
+        this.sex = sex;
+    }
+
     public int getId() {
         return id;
     }

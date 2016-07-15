@@ -86,11 +86,7 @@
           </grid>
         </constraints>
         <properties>
-          <model>
-            <item value="Masaj de relaxare"/>
-            <item value="Drenaj limfatic"/>
-            <item value="Masaj reflexogen"/>
-          </model>
+          <model/>
         </properties>
       </component>
       <component id="55517" class="javax.swing.JTextField" binding="textField1" default-binding="true">

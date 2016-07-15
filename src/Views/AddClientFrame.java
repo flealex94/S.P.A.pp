@@ -43,11 +43,11 @@ public class AddClientFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                ClientService cs = new ClientService(DatabaseManager.getInstance().getConn());
-
+                ClientService cs =  ClientService.getInstance(DatabaseManager.getInstance().getConn());
                 Client client = new Client(textField1.getText(),textField2.getText(),textField4.getText(),textField3.getText(),comboBox1.getSelectedItem().toString());
-                System.out.println("Add new client!!!");
+
                 cs.saveClient(client);
+                System.out.println("Client adaugat in BD!");
 
                 setVisible(false); //you can't see me!
                 JFrame nextFrame = new AddProgramareFrame();

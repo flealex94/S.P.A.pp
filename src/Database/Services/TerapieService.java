@@ -5,24 +5,28 @@ import Database.DaoImplementations.TerapieDaoImpl;
 import Pojos.Terapeut;
 import Pojos.TerapeutTerapie;
 import Pojos.Terapie;
+import Utils.AppUtils;
 import com.j256.ormlite.support.ConnectionSource;
 
-import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-/**
- * Created by teodor-stefu on 7/13/16.
- */
 public class TerapieService {
 
+    private static TerapieService instance = null;
+    ConnectionSource conn = null;
     TerapieDaoImpl terapiiStore;
     TerapeutTerapieDaoImpl terapeutTerapieStore;
 
-    public TerapieService(ConnectionSource conn) {
+    public static TerapieService getInstance(ConnectionSource conn) {
+        if (instance == null)
+            instance = new TerapieService(conn);
+        return instance;
+    }
+
+    private TerapieService(ConnectionSource conn) {
 
         try {
             terapiiStore = new TerapieDaoImpl(conn);
@@ -36,7 +40,7 @@ public class TerapieService {
 
 
     public List<Terapie> getAllTerapies() {
-        System.out.println("Getting all the fking clients, mofo!");
+
         List<Terapie> ret = null;
         try {
             ret = terapiiStore.queryForAll();
@@ -70,4 +74,15 @@ public class TerapieService {
         return ret;
     }
 
+    public int saveTerapie(Terapie terapie) {
+        int id = -1;
+        try {
+            id = terapiiStore.create(terapie);
+            AppUtils.getLocalTerapies().add(terapie);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(id);
+        return id;
+    }
 }

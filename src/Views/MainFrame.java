@@ -1,14 +1,13 @@
 package Views;
 
+import Database.DatabaseManager;
 import Utils.AppUtils;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-/**
- * Created by teodor on 29.06.2016.
- */
 public class MainFrame extends JFrame {
     private JButton configurareButton;
     private JButton vizualizareButton;
@@ -56,6 +55,12 @@ public class MainFrame extends JFrame {
         // exit button
         iesireButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    DatabaseManager.getInstance().getConn().close();
+                    System.out.println("Conexiune la baza de date inchisa!");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 dispose(); //Destroy the JFrame object
                 System.exit(0);
             }

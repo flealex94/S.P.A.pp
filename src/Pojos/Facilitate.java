@@ -14,6 +14,13 @@ public class Facilitate {
     @DatabaseField(columnName = "Nume", canBeNull = false)
     private String nume;
 
+    public Facilitate() {
+    }
+
+    public Facilitate(String nume) {
+        this.nume = nume;
+    }
+
     public Facilitate(int id, String nume) {
         this.id = id;
         this.nume = nume;

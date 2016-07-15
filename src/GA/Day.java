@@ -26,13 +26,13 @@ package GA;
  */
 public enum Day {
 
-    MONDAY("Mon", 9, 21),
-    TUESDAY("Tue", 9, 21),
-    WEDNESDAY("Wed", 9, 21),
-    THURSDAY("Thu", 9, 21),
-    FRIDAY("Fri", 9, 21),
-    SATURDAY("Sat", 9, 21),
-    SUNDAY("Sun", 9, 21);
+    MONDAY("Luni", 9, 21),
+    TUESDAY("Marti", 9, 21),
+    WEDNESDAY("Miercuri", 9, 21),
+    THURSDAY("Joi", 9, 21),
+    FRIDAY("Vineri", 9, 21),
+    SATURDAY("Sambata", 9, 21),
+    SUNDAY("Duminica", 9, 21);
     /**
      * Range admissible for tasks
      */

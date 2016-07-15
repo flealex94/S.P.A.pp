@@ -1,5 +1,8 @@
 package Views;
 
+import Database.DatabaseManager;
+import Database.Services.TerapieService;
+import Pojos.Terapie;
 import Utils.AppUtils;
 
 import javax.swing.*;
@@ -47,7 +50,12 @@ public class AddTerapieFrame extends JFrame {
         salveazăButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("terapie adaugata!");
+
+                TerapieService ts = TerapieService.getInstance(DatabaseManager.getInstance().getConn());
+                Terapie terapie= new Terapie(textField1.getText());
+
+                ts.saveTerapie(terapie);
+                System.out.println("Terapie adaugata in BD!");
 
                 textField1.setText("");
                 textField2.setText("");

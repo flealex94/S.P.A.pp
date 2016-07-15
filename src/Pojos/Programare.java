@@ -33,8 +33,7 @@ public class Programare {
     // constructors
     public Programare() {}
 
-
-    public Programare(int id, int idSala, int idClient, int idTerapeut, int idTerapie, Date dataProgramare) {
+    public Programare(int idSala, int idClient, int idTerapeut, int idTerapie, Date dataProgramare) {
         this.id = id;
         this.idSala = idSala;
         this.idClient = idClient;

@@ -1,22 +1,26 @@
 package Database.Services;
 
-import Database.DaoImplementations.ClientDaoImpl;
 import Database.DaoImplementations.SalaDaoImpl;
-import Pojos.Client;
 import Pojos.Sala;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by teodor-stefu on 7/13/16.
- */
+
 public class SalaService {
 
+    private static SalaService instance = null;
+    ConnectionSource conn = null;
     SalaDaoImpl salaStore;
 
-    public SalaService(ConnectionSource conn) {
+    public static SalaService getInstance(ConnectionSource conn) {
+        if (instance == null)
+            instance = new SalaService(conn);
+        return instance;
+    }
+
+    private SalaService(ConnectionSource conn) {
 
         try {
             salaStore = new SalaDaoImpl(conn);
@@ -27,7 +31,7 @@ public class SalaService {
     }
 
     public List<Sala> getAllSalas() {
-        System.out.println("Getting all the fking clients, mofo!");
+
         List<Sala> ret = null;
         try {
             ret = salaStore.queryForAll();
@@ -36,5 +40,7 @@ public class SalaService {
         }
         return ret;
     }
+
+
 
 }

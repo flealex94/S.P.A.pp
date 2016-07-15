@@ -8,13 +8,13 @@ import java.sql.SQLException;
 
 
 public class DatabaseManager {
-    static private DatabaseManager instance;
+    static private DatabaseManager instance = null;
     String url, port, user;
     ConnectionSource conn = null;
 
     public static DatabaseManager getInstance() {
         if (instance == null)
-            instance = new DatabaseManager("localhost/SPA", "root", "teodor");
+            instance = new DatabaseManager("localhost/SPA", "root", "test");
         return instance;
     }
 
@@ -24,10 +24,10 @@ public class DatabaseManager {
         user = user;
         try {
             conn = new JdbcConnectionSource("jdbc:mysql://" + url, user, password);
-            System.out.println("Connection to database ........... Success");
+            System.out.println("Connexiune la baza de date ........... Succes!\n");
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Connection to database ........... Fail");
+            System.out.println("Connexiune la baza de date ........... Esuare!\n");
         }
     }
 
